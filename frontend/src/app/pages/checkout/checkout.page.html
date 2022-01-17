@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Pagamento</ion-title>
+    <ion-menu-button slot="start" color="light"></ion-menu-button>
+  </ion-toolbar>
+      <br>
+  <ion-toolbar  color="" >
+    <ion-searchbar [(ngModel)] = "searchJogador" (keyup)="toFilter($event)" 
+                    (ionClear) ="clearFilter()" placeholder="Pesquisar">
+    </ion-searchbar>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content fullscreen="true">
+  <h1 class="title">Compra</h1>
+
+  <div class="cart-items">
+    <ion-card mode="ios">
+      <ion-card-content>
+        
+
+        <div class="item-info">
+          <p>Assinatura Premium</p>
+          <p>Nome do usuário</p>
+          <p>R$29.90</p>
+
+      
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+  <hr>
+
+  <div class="cart-total">
+    <ion-item lines="none">
+      <ion-label>Sub Total</ion-label>
+      <ion-label slot="end" class="ion-text-right">R$29.90</ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>Cupom de desconto</ion-label>
+      <ion-label slot="end" class="ion-text-right">R$0.00</ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>Total</ion-label>
+      <ion-label slot="end" class="ion-text-right">R$29.90</ion-label>
+    </ion-item>
+  </div>
+
+<ion-button id="nested-button" class="container-form-btn ">Formas de pagamento</ion-button>
+<ion-popover trigger="nested-button" [dismissOnSelect]="true">
+  <ng-template>
+    <ion-content>
+      <ion-list>
+        <ion-item [button]="true" [detail]="false">
+          <ion-label (click)="ShowDebito()">Débito</ion-label>
+        </ion-item>
+        <ion-item [button]="true" [detail]="false">
+          <ion-label (click)="ShowCredito()">Crédito</ion-label>
+        </ion-item>
+        <ion-item [button]="true" [detail]="false">
+          <ion-label (click)="ShowPix()">Pix</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-popover>
+<div class="container-form-btn">
+  <button class="form-btn custom-font" (click)="ShowPage()">Voltar</button>
+</div>
+
+</ion-content>

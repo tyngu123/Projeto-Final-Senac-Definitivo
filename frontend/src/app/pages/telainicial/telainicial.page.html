@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Vagas</ion-title>
+    <ion-menu-button slot="start" color="light"></ion-menu-button>
+  </ion-toolbar>
+  <br>
+  <ion-toolbar  color="" >
+    <ion-searchbar placeholder="Pesquisar"></ion-searchbar>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+    <ion-list *ngIf="!vagas.length">
+      <ion-item *ngFor="let item of [0, 1, 2]">
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+      <h1>Não há vagas no momento!</h1>
+    </ion-list>
+
+    <ion-list *ngFor="let vaga of vagas">
+        <ion-item button [routerLink]="['pages/detalhes-vaga',vaga.id]">
+          <ion-label>
+            {{ vaga.vaga }}
+            <p>{{ vaga.estado }}</p>
+            <p>{{ vaga.jornada }}</p>
+            <p>{{ vaga.criacao | date: 'short' }}</p>
+          </ion-label>
+          <ion-note color="primary" slot="end" *ngIf="vaga.salario">{{ vaga.salario | currency: 'BRL' }}</ion-note>
+        </ion-item>
+    </ion-list>
+</ion-content>
