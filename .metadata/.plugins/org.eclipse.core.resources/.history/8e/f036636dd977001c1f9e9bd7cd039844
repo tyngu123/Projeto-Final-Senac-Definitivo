@@ -1,0 +1,5 @@
+package projeto.senac.resource;
+
+public class UsuarioResource {
+
+}
