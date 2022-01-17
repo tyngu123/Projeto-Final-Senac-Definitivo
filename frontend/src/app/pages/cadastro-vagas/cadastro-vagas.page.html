@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Cadastre uma vaga</ion-title>
+    <ion-menu-button slot="start" color="light"></ion-menu-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="wrap-input">
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="vaga.vaga" placeholder="Vaga de trabalho  ex: adminstração, direito, engenharia"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="vaga.estado" placeholder="estado  ex: RJ, SP, MG"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="vaga.jornada" placeholder="jornada de trabalho  ex: 8 horas/dia, 40 horas por semana"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="vaga.salario" placeholder="salário  ex: 1000,10000,100000"></ion-input>
+    </ion-item>
+  </ion-list>
+  <div class="container-form-btn">
+    <ion-button (click)="saveVaga()" expand="block">
+      Adicionar vaga
+    </ion-button>
+  </div>
+  <div class="container-form-btn">
+    <button class="form-btn custom-font" (click)="ShowPage()">Voltar</button>
+  </div>
+</ion-content>

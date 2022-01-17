@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title> Gerenciamento das vagas </ion-title>
+    <ion-menu-button slot="start" color="light"></ion-menu-button>
+  </ion-toolbar>
+  <br>
+  <ion-toolbar  color="" >
+    <ion-searchbar placeholder="Pesquisar"></ion-searchbar>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+    <ion-list *ngIf="!vagas.length">
+      <ion-item *ngFor="let item of [0, 1, 2]">
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+      <h1>Não há vagas no momento!</h1>
+    </ion-list>
+
+    <ion-list>
+        <ion-item-sliding *ngFor="let vaga of vagas">
+          <ion-item >
+            <ion-label>
+              {{ vaga.vaga }}
+              <p>{{ vaga.estado }}</p>
+              <p>{{ vaga.jornada }}</p>
+              <p>{{ vaga.criacao | date: 'short' }}</p>
+            </ion-label>
+            <ion-note color="primary" slot="end" *ngIf="vaga.salario">{{ vaga.salario | currency: 'BRL' }}</ion-note>
+          </ion-item>
+
+          <ion-item-options side="end">
+            <ion-item-option color="danger" (click)="deleteVaga(vaga.id)">
+              <ion-icon slot="top" name="trash"></ion-icon>
+              Excluir
+            </ion-item-option>
+            <ion-item-option color="" button [routerLink]="['pages/cadastro-vagas', vaga.id]">
+              <ion-icon slot="top" name="pencil"></ion-icon>
+              Editar
+            </ion-item-option>
+          </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+</ion-content>

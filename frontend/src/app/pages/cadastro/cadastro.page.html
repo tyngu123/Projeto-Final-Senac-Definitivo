@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Cadastro</ion-title>
+    <ion-menu-button slot="start" color="light"></ion-menu-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  class="swiper-no-swiping">
+  <ion-segment class="swp"(ionChange)="segmentChanged($event)" mode="ios" value="candidato">
+    <ion-segment-button  class="swp2" mode="ios" value="candidato">
+      <ion-label class="label">Candidato</ion-label>
+    </ion-segment-button>
+    <ion-segment-button class="swp2" mode="ios" value="contratante">
+      <ion-label class="label">Anunciar vaga </ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-slides>
+    <ion-slide>
+    <form class="wrap-input">
+      <div>
+        <div class="wrap-input">
+          <input class="input" type="text" name="name" placeholder="NOME" [(ngModel)]="userRegister.nome">
+        </div>
+        <div class="wrap-input">
+          <input class="input" type="text" name="lastname" placeholder="SOBRENOME" [(ngModel)]="userRegister.sobrenome">
+        </div>
+        <div class="wrap-input">
+          <input class="input" type="date" name="date" placeholder="DATA DE NASCIMENTO" [(ngModel)]="userRegister.data">
+        </div>
+    
+        <div class="wrap-input">
+          <input class="input" type="number" name="cpf" placeholder="CPF" [(ngModel)]="userRegister.cpf">
+        </div>
+    
+        <div class="wrap-input">
+          <input class="input" type="text" name="endereco" placeholder="ENDEREÇO"[(ngModel)]="userRegister.endereco"> 
+        </div>
+    
+        <div class="wrap-input">
+          <input class="input" type="text" name="municipio" placeholder="MUNICÍPIO" [(ngModel)]="userRegister.municipio">
+        </div>
+    
+        <div class="wrap-input">
+          <input class="input" type="text" name="bairro" placeholder="BAIRRO" [(ngModel)]="userRegister.bairro">
+        </div>
+    
+        <div class="wrap-input">
+          <input class="input" type="text" name="estado" placeholder="ESTADO" [(ngModel)]="userRegister.estado">
+        </div>
+    
+        <div class="wrap-input">
+          <input class="input" type="number" name="cep" placeholder="CEP" [(ngModel)]="userRegister.cep">
+        </div>
+    
+        <div class="wrap-input">
+          <input class="input" type="email" name="emailusuario" placeholder="EMAIL" [(ngModel)]="userRegister.email">
+        </div>
+    
+        <div class="wrap-input">
+          <input class="input" type="password" name="passwordusuario" placeholder="SENHA" [(ngModel)]="userRegister.password">
+        </div>
+        <div class="wrap-input">
+          <input class="input" type="password" name="password" placeholder="CONFIRMAR SENHA">
+        </div>
+    
+    
+      <div class="container-form-btn">
+          <button class="form-btn custom-font" (click)="register()">Cadastrar
+          </button>
+      </div>
+    </div>
+  </form>
+</ion-slide>
+<ion-slide>
+      <form class="wrap-input">
+        <div>
+          <div class="wrap-input">
+            <input class="input" type="text" name="name" placeholder="NOME DA EMPRESA">
+          </div>
+          <div class="wrap-input">
+            <input class="input" type="number" name="lastname" placeholder="CNPJ">
+          </div>
+          <div class="wrap-input">
+            <input class="input" type="text" name="endereço" placeholder="ENDEREÇO">
+          </div>
+          <div class="wrap-input">
+            <input class="input" type="email" name="emailempresa" placeholder="EMAIL" [(ngModel)]="userRegister.email">
+          </div>
+          <div class="wrap-input">
+            <input class="input" type="password" name="passwordempresa" placeholder="SENHA" [(ngModel)]="userRegister.password">
+          </div>
+          <div class="wrap-input">
+            <input class="input" type="password" name="password" placeholder="CONFIRMAR SENHA">
+          </div>
+        </div>
+        <div class="container-form-btn">
+          <button class="form-btn custom-font" (click)="register()">Cadastrar
+          </button>
+      </div>
+      </form>
+</ion-slide>
+    
+</ion-slides>
+
+</ion-content>
