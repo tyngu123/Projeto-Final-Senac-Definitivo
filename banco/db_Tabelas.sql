@@ -59,7 +59,7 @@ CREATE TABLE endereco (
 				ON DELETE CASCADE,
                 CEP VARCHAR(20) NOT NULL,
                 numero int NOT NULL,
-                complemento ENUM('Casa', 'Apartamento')
+                complemento VARCHAR (15)
 			) ENGINE = innodb;    
 
 CREATE TABLE usuario (
@@ -76,7 +76,6 @@ CREATE TABLE usuario (
 		REFERENCES endereco(id_endereco)
 				ON UPDATE CASCADE
 				ON DELETE CASCADE,
-        cep VARCHAR(15) NOT NULL,
         email VARCHAR(50) NOT NULL UNIQUE,
         senha VARCHAR(15) NOT NULL,
         id_tipo int NOT NULL,
@@ -200,41 +199,13 @@ CREATE TABLE vagas (
         requisitos VARCHAR(200) NOT NULL
 )ENGINE = innodb;          
 
-CREATE TABLE termo_uso (
-	   id_termo INT PRIMARY KEY auto_increment,
-       descricao VARCHAR(100)
-       )ENGINE = innodb;
-       
-CREATE TABLE sobre (
-			id_sobre INT PRIMARY KEY auto_increment,
-            descricao VARCHAR(100)
-            )ENGINE = innodb;
-            
-CREATE TABLE seguranca(
-			id_seguranca INT PRIMARY KEY auto_increment,
-            descricao VARCHAR (100)
-            ) ENGINE = innodb;
             
 CREATE TABLE config (
 			id_config INT PRIMARY KEY auto_increment,
-            id_termo INT,
-            FOREIGN KEY (id_termo)
-			REFERENCES termo_uso(id_termo)
-			ON UPDATE CASCADE
-            ON DELETE CASCADE,
-            id_sobre INT,
-            FOREIGN KEY (id_sobre)
-			REFERENCES sobre(id_sobre)
-			ON UPDATE CASCADE
-            ON DELETE CASCADE,
-            id_seguranca INT, 
-            FOREIGN KEY (id_seguranca)
-            REFERENCES seguranca(id_seguranca)
-            ON UPDATE CASCADE
-            ON DELETE CASCADE
-            
+            termo varchar(500),
+		    sobre varchar(500),
+		    seguranca varchar(500)
+          
 )ENGINE = innodb;
 
 
-
-drop database db_projeto_final;
