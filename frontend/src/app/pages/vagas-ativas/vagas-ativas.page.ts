@@ -28,6 +28,7 @@ export class VagasAtivasPage implements OnInit {
   }
 
   async deleteVaga(id: string) {
+    
     try {
       this.vagasService.deleteVaga(id);
 

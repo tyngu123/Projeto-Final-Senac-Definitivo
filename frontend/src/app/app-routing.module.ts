@@ -70,8 +70,10 @@ const routes: Routes = [
     path: 'pages/perfil',
     loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
   },
-
-
+  {
+    path: 'pages/admin',
+    loadChildren: () => import('./pages/admin/admin.module').then( m => m.AdminPageModule)
+  },
 
 ];
 

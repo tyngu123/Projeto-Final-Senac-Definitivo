@@ -11,10 +11,11 @@ export class AppComponent {
     { title: 'Cadastro', url: 'pages/cadastro', icon: 'person-add' },
     { title: 'Entrar', url: 'pages/login', icon: 'enter' },
     { title: 'Assinaturas', url: 'pages/assinaturas', icon: 'cart' },
-    { title: 'Configurações', url: 'pages/settings', icon: 'settings' },
-    { title: 'Logout', url: 'pages/logout', icon: 'log-out' },
     { title: 'Cadastro de vagas', url: 'pages/cadastro-vagas', icon: 'add-circle'},
     { title: 'Gerenciamento de vagas', url: 'pages/vagas-ativas', icon: 'pencil'},
+    { title: 'Acesso Restrito', url: 'pages/login', icon: 'lock-closed'},
+    { title: 'Configurações', url: 'pages/settings', icon: 'settings' },
+    { title: 'Logout', url: 'pages/logout', icon: 'log-out' },
 
   ];
   public labels= ['Rio de Janeiro', 'São Paulo', 'Belo Horizonte', 'Fortaleza', 'Santa Catarina', 'Brasília'];
