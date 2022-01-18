@@ -48,8 +48,9 @@
               <ion-icon slot="top" name="trash"></ion-icon>
               Excluir
             </ion-item-option>
-            <ion-item-option color="" button [routerLink]="['pages/cadastro-vagas', vaga.id]">
-              <ion-icon slot="top" name="pencil"></ion-icon>
+            
+            <ion-item-option color="" (click)="ShowEditar()" >
+              <ion-icon  slot="top" name="pencil"></ion-icon>
               Editar
             </ion-item-option>
           </ion-item-options>
