@@ -3,77 +3,111 @@ package projeto.senac.modelo;
 import java.util.Date;
 
 public class Usuario {
-	private int id;
-	private String email;
-	private String nome;
+	private int id_usuario;
+	private String nome_completo;
+	private String apelido;
 	private Date nascimento;
+	private String documento;
+	private TipoDocumento tipoDocumento;
+	private Endereco endereco;
+	private String email;
 	private String senha;
+	private TipoUsuario tipoUsuario;
 	
-	public Usuario(String email,String nome,Date nascimento,String senha) {
-		this.email = email;
-		this.nome = nome;
+	public Usuario(int id_usuario, String nome_completo, String apelido, Date nascimento, String documento,
+			String email, String senha) {
+		
+		super();
+		this.id_usuario = id_usuario;
+		this.nome_completo = nome_completo;
+		this.apelido = apelido;
 		this.nascimento = nascimento;
-		this.senha = senha;
-		
-	}
-	
-	public Usuario(String email,String senha) {
+		this.documento = documento;
 		this.email = email;
 		this.senha = senha;
 	}
-	
 
-	
-	public Usuario() {
-		
-	}
-	
-	public Usuario(int id) {
-		this.id = id;
+	public int getId_usuario() {
+		return id_usuario;
 	}
 
-	public Usuario(String email,String nome,Date nascimento,String senha,int id) {
-		this.email = email;
-		this.nome = nome;
-		this.nascimento = nascimento;
-		this.senha = senha;
-		this.id = id;
-		
+	public void setId_usuario(int id_usuario) {
+		this.id_usuario = id_usuario;
 	}
 
+	public String getNome_completo() {
+		return nome_completo;
+	}
 
+	public void setNome_completo(String nome_completo) {
+		this.nome_completo = nome_completo;
+	}
 
+	public String getApelido() {
+		return apelido;
+	}
 
-	public int getId() {
-		return id;
+	public void setApelido(String apelido) {
+		this.apelido = apelido;
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+
 	public Date getNascimento() {
 		return nascimento;
 	}
+
 	public void setNascimento(Date nascimento) {
 		this.nascimento = nascimento;
 	}
+
+	public String getDocumento() {
+		return documento;
+	}
+
+	public void setDocumento(String documento) {
+		this.documento = documento;
+	}
+
+	public TipoDocumento getTipoDocumento() {
+		return tipoDocumento;
+	}
+
+	public void setTipoDocumento(TipoDocumento tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getSenha() {
 		return senha;
 	}
+
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+	
+	
 
 	
 }
