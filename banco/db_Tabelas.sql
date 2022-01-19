@@ -67,7 +67,7 @@ CREATE TABLE usuario (
 		id_usuario int PRIMARY KEY auto_increment,
         nome_completo VARCHAR(50) NOT NULL,
         apelido VARCHAR(50) NOT NULL,
-        nascimento date,
+        nascimento date null,
         documento VARCHAR(30) NOT NULL UNIQUE,
         id_documento INT NOT NULL,
         FOREIGN KEY (id_documento)
@@ -170,7 +170,7 @@ CREATE TABLE forma_de_pagamento (
 CREATE TABLE venda(
 		id_venda INT,
 		data_venda DATE,
-		id_assinatura INT,
+		id_plano INT,
         valor DECIMAL (4,2),
         FOREIGN KEY (id_plano)
 		REFERENCES plano_cliente(id_plano)
