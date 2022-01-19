@@ -28,14 +28,13 @@ export class PerfilPage implements OnInit {
       inputs:[
         {
           name:'nome',
-          placeholder:'Nome do titular',
+          placeholder:'Nome completo',
 
         },
 
         {
-           name:'cartao',
-           placeholder:'Número do cartão',
-           type:'password',
+           name:'data',
+           placeholder:'Data de nascimento',
 
         },
         {
@@ -46,10 +45,31 @@ export class PerfilPage implements OnInit {
 
        },
        {
-        name:'senha',
-        placeholder:'Senha',
-        type:'password',
+        name:'cpf',
+        placeholder:'CPF',
+        type:'number',
      },
+     {
+      name:'endereco',
+      placeholder:'Endereço',
+      },
+      
+      {
+        name:'cep',
+        placeholder:'CEP',
+        type:'number',
+      },
+      
+      {
+        name:'municipio',
+        placeholder:'Município',
+      },
+      
+      {
+        name:'estado',
+        placeholder:'Estado',
+     },
+
     ],
 
       buttons:[

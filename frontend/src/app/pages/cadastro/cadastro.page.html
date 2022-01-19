@@ -6,16 +6,11 @@
 </ion-header>
 
 <ion-content  class="swiper-no-swiping">
-  <ion-segment class="swp"(ionChange)="segmentChanged($event)" mode="ios" value="candidato">
-    <ion-segment-button  class="swp2" mode="ios" value="candidato">
-      <ion-label class="label">Candidato</ion-label>
-    </ion-segment-button>
-    <ion-segment-button class="swp2" mode="ios" value="contratante">
-      <ion-label class="label">Anunciar vaga </ion-label>
-    </ion-segment-button>
-  </ion-segment>
-  <ion-slides>
-    <ion-slide>
+
+    <div class="center space-above">
+      <ion-img src="../../../assets/mastervagas.png"></ion-img>
+    </div>
+  
     <form class="wrap-input">
       <div>
         <div class="wrap-input">
@@ -70,36 +65,5 @@
       </div>
     </div>
   </form>
-</ion-slide>
-<ion-slide>
-      <form class="wrap-input">
-        <div>
-          <div class="wrap-input">
-            <input class="input" type="text" name="name" placeholder="NOME DA EMPRESA">
-          </div>
-          <div class="wrap-input">
-            <input class="input" type="number" name="lastname" placeholder="CNPJ">
-          </div>
-          <div class="wrap-input">
-            <input class="input" type="text" name="endereço" placeholder="ENDEREÇO">
-          </div>
-          <div class="wrap-input">
-            <input class="input" type="email" name="emailempresa" placeholder="EMAIL" [(ngModel)]="userRegister.email">
-          </div>
-          <div class="wrap-input">
-            <input class="input" type="password" name="passwordempresa" placeholder="SENHA" [(ngModel)]="userRegister.password">
-          </div>
-          <div class="wrap-input">
-            <input class="input" type="password" name="password" placeholder="CONFIRMAR SENHA">
-          </div>
-        </div>
-        <div class="container-form-btn">
-          <button class="form-btn custom-font" (click)="register()">Cadastrar
-          </button>
-      </div>
-      </form>
-</ion-slide>
-    
-</ion-slides>
 
 </ion-content>
