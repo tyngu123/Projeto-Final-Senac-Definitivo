@@ -14,18 +14,18 @@ CREATE TABLE tipo_documento(
     
 CREATE TABLE bairro(
 	id_bairro int PRIMARY KEY auto_increment,
-	descricao VARCHAR(20)
+	descricao VARCHAR(50)
 ) ENGINE = innodb;
 
 CREATE TABLE estado(
 	id_estado int PRIMARY KEY auto_increment,
-	descricao VARCHAR(20),
+	descricao VARCHAR(50),
     UF CHAR(2)
 ) ENGINE = innodb;
 
 CREATE TABLE municipio(
 	id_municipio int PRIMARY KEY auto_increment,
-	descricao VARCHAR(20),
+	descricao VARCHAR(50),
     id_estado int,
 	FOREIGN KEY (id_estado)
     REFERENCES estado(id_estado)
@@ -35,7 +35,7 @@ CREATE TABLE municipio(
 
 CREATE TABLE logradouro(
 	id_logradouro int PRIMARY KEY auto_increment,
-	descricao VARCHAR(20)
+	descricao VARCHAR(50)
     
 ) ENGINE = innodb;
 
@@ -47,25 +47,26 @@ CREATE TABLE endereco (
 		REFERENCES logradouro(id_logradouro)
 				ON UPDATE CASCADE
 				ON DELETE CASCADE,
-		 id_bairro INT NOT NULL,
+		nome_rua VARCHAR (500),
+		id_bairro INT NOT NULL,
         FOREIGN KEY (id_bairro)
 		REFERENCES bairro(id_bairro)
 				ON UPDATE CASCADE
 				ON DELETE CASCADE,
-                 id_municipio INT,
+		id_municipio INT,
         FOREIGN KEY (id_municipio)
 		REFERENCES municipio(id_municipio)
 				ON UPDATE CASCADE
 				ON DELETE CASCADE,
-                CEP VARCHAR(20) NOT NULL,
-                numero int NOT NULL,
-                complemento VARCHAR (15)
-			) ENGINE = innodb;    
+		CEP VARCHAR(20) NOT NULL,
+		numero int NOT NULL,
+		complemento VARCHAR (50)
+) ENGINE = innodb;    
 
 CREATE TABLE usuario (
 		id_usuario int PRIMARY KEY auto_increment,
-        nome_completo VARCHAR(15) NOT NULL,
-        apelido VARCHAR(15) NOT NULL,
+        nome_completo VARCHAR(50) NOT NULL,
+        apelido VARCHAR(50) NOT NULL,
         nascimento date,
         documento VARCHAR(30) NOT NULL UNIQUE,
         id_documento INT NOT NULL,
@@ -77,7 +78,7 @@ CREATE TABLE usuario (
 				ON UPDATE CASCADE
 				ON DELETE CASCADE,
         email VARCHAR(50) NOT NULL UNIQUE,
-        senha VARCHAR(15) NOT NULL,
+        senha VARCHAR(30) NOT NULL,
         id_tipo int NOT NULL,
 			FOREIGN KEY (id_tipo)
 			REFERENCES tipo_usuario(id_tipo)
@@ -88,15 +89,15 @@ CREATE TABLE usuario (
 
 
 CREATE TABLE plano_cliente (
-		id_assinatura int primary key auto_increment,
-		planos VARCHAR(30),
-        planos_descricao VARCHAR (40),
+		id_plano int primary key auto_increment,
+		planos VARCHAR(100),
+        planos_descricao VARCHAR (100),
         planos_preco DECIMAL(4,2)
 ) ENGINE = innodb;
         
 CREATE TABLE funcionalidade (
 			id_fun INT PRIMARY KEY auto_increment,
-            fun VARCHAR(15),
+            fun VARCHAR(100),
             fun_descricao VARCHAR(100)
            ) ENGINE = innodb;      
         
@@ -112,23 +113,23 @@ CREATE TABLE funcionalidade (
             REFERENCES funcionalidade(id_fun)
             ON UPDATE CASCADE
             ON DELETE CASCADE,
-              id_assinatura INT,
-            FOREIGN KEY (id_assinatura)
-            REFERENCES plano_cliente(id_assinatura)
+              id_plano INT,
+            FOREIGN KEY (id_plano)
+            REFERENCES plano_cliente(id_plano)
             ON UPDATE CASCADE
             ON DELETE CASCADE
 	) ENGINE = innodb;    
     
 CREATE TABLE assinatura_do_cliente (
-		id_ass_cli int primary key auto_increment,
+		id_assinatura int primary key auto_increment,
 		id_usuario int,
 			foreign key (id_usuario)
 			references usuario(id_usuario)
 				ON UPDATE CASCADE
 				ON DELETE CASCADE,
-		id_assinatura int,
-			foreign key (id_assinatura)
-			references plano_cliente(id_assinatura)
+		id_plano int,
+			foreign key (id_plano)
+			references plano_cliente(id_plano)
 				ON UPDATE CASCADE
 				ON DELETE CASCADE 
 )ENGINE = innodb; 
@@ -171,8 +172,8 @@ CREATE TABLE venda(
 		data_venda DATE,
 		id_assinatura INT,
         valor DECIMAL (4,2),
-        FOREIGN KEY (id_assinatura)
-		REFERENCES plano_cliente(id_assinatura)
+        FOREIGN KEY (id_plano)
+		REFERENCES plano_cliente(id_plano)
             ON UPDATE CASCADE
             ON DELETE CASCADE,
 		id_forma_pagamento int,
@@ -200,12 +201,5 @@ CREATE TABLE vagas (
 )ENGINE = innodb;          
 
             
-CREATE TABLE config (
-			id_config INT PRIMARY KEY auto_increment,
-            termo varchar(500),
-		    sobre varchar(500),
-		    seguranca varchar(500)
-          
-)ENGINE = innodb;
 
 
