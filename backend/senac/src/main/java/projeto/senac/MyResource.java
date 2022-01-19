@@ -42,93 +42,93 @@ public class MyResource {
     	return response;
     }
     
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("cadastrar")
-    public Response postUsuario(Usuario usuario) {
-    	UsuarioServico servico = new UsuarioServico();
-    	servico.cadastrarUsuarios(usuario);
-    	
-    	Response response = Response.ok().entity(true).build();
-    	return response;
-    	
-    }
-    
-    @DELETE
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("excluir")
-    public Response deleteUsuario(Usuario usuario) {
-    	UsuarioServico servico = new UsuarioServico();
-    	servico.excluirUsuarios(usuario);
-    	
-    	Response response = Response.ok().entity(true).build();
-    	return response;  
-    	
-    }
-    
-    @PUT
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("alterar")
-    public Response putUsuario(Usuario usuario) {
-    	UsuarioServico servico = new UsuarioServico();
-    	servico.alterarUsuarios(usuario);
-    	
-    	Response response = Response.ok().entity(true).build();
-    	return response;
-    }
-    
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-   // @Consumes(MediaType.APPLICATION_JSON)
-    @Path("logar")
-    public Response getLoginInfo(@QueryParam("email")String email,@QueryParam("senha")String senha) {
-    	UsuarioServico servico = new UsuarioServico();
-    	Usuario usuario = servico.logarUsuario(email,senha);
-    	if(usuario.getId() != 0) {
-        	Response response = Response.ok().entity(usuario).build();
-        	return response;
-        	} else {
-        	Response response = Response.ok().entity("Usuário ou senha incorreto.").build();
-            return response;
-        	}
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-   // @Consumes(MediaType.APPLICATION_JSON)
-    @Path("buscarId")
-    public Response getUsuariosId(@QueryParam("id")int id) {
-    	UsuarioServico servico = new UsuarioServico();
-    	Usuario usuario= servico.buscarUsuarioId(id);
-    	if(usuario.getId() != 0) {
-        	Response response = Response.ok().entity(usuario).build();
-        	return response;
-        	} else {
-        	Response response = Response.ok().entity("Não foi possível encontrar esse ID").build();
-            return response;
-        	}
-
-        }
-
-
-        @GET
-        @Produces(MediaType.APPLICATION_JSON)
-        @Path("buscarNome")
-        public Response getUsuariosNome(@QueryParam("nome")String nome) {
-        	UsuarioServico servico = new UsuarioServico();
-        	List<Usuario> lista = servico.buscarUsuarioNome(nome);
-
-
-        	if(!lista.isEmpty()) {
-        		Response response = Response.ok().entity(lista).build();
-
-        		return response;
-        	} else {
-        		Response response = Response.ok().entity("Nome não encontrado").build();
-
-            	return response;
-        	}
-        }
+//    @POST
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("cadastrar")
+//    public Response postUsuario(Usuario usuario) {
+//    	UsuarioServico servico = new UsuarioServico();
+//    	servico.cadastrarUsuarios(usuario);
+//    	
+//    	Response response = Response.ok().entity(true).build();
+//    	return response;
+//    	
+//    }
+//    
+//    @DELETE
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("excluir")
+//    public Response deleteUsuario(Usuario usuario) {
+//    	UsuarioServico servico = new UsuarioServico();
+//    	servico.excluirUsuarios(usuario);
+//    	
+//    	Response response = Response.ok().entity(true).build();
+//    	return response;  
+//    	
+//    }
+//    
+//    @PUT
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("alterar")
+//    public Response putUsuario(Usuario usuario) {
+//    	UsuarioServico servico = new UsuarioServico();
+//    	servico.alterarUsuarios(usuario);
+//    	
+//    	Response response = Response.ok().entity(true).build();
+//    	return response;
+//    }
+//    
+//    @GET
+//    @Produces(MediaType.APPLICATION_JSON)
+//   // @Consumes(MediaType.APPLICATION_JSON)
+//    @Path("logar")
+//    public Response getLoginInfo(@QueryParam("email")String email,@QueryParam("senha")String senha) {
+//    	UsuarioServico servico = new UsuarioServico();
+//    	Usuario usuario = servico.logarUsuario(email,senha);
+//    	if(usuario.getId() != 0) {
+//        	Response response = Response.ok().entity(usuario).build();
+//        	return response;
+//        	} else {
+//        	Response response = Response.ok().entity("Usuário ou senha incorreto.").build();
+//            return response;
+//        	}
+//    }
+//
+//    @GET
+//    @Produces(MediaType.APPLICATION_JSON)
+//   // @Consumes(MediaType.APPLICATION_JSON)
+//    @Path("buscarId")
+//    public Response getUsuariosId(@QueryParam("id")int id) {
+//    	UsuarioServico servico = new UsuarioServico();
+//    	Usuario usuario= servico.buscarUsuarioId(id);
+//    	if(usuario.getId() != 0) {
+//        	Response response = Response.ok().entity(usuario).build();
+//        	return response;
+//        	} else {
+//        	Response response = Response.ok().entity("Não foi possível encontrar esse ID").build();
+//            return response;
+//        	}
+//
+//        }
+//
+//
+//        @GET
+//        @Produces(MediaType.APPLICATION_JSON)
+//        @Path("buscarNome")
+//        public Response getUsuariosNome(@QueryParam("nome")String nome) {
+//        	UsuarioServico servico = new UsuarioServico();
+//        	List<Usuario> lista = servico.buscarUsuarioNome(nome);
+//
+//
+//        	if(!lista.isEmpty()) {
+//        		Response response = Response.ok().entity(lista).build();
+//
+//        		return response;
+//        	} else {
+//        		Response response = Response.ok().entity("Nome não encontrado").build();
+//
+//            	return response;
+//        	}
+//        }
 
 
     }

@@ -15,7 +15,7 @@ public class Dao {
 			Class.forName(driverName); // É atraves dela que chamamos o driver JDBC(forName) (Carregar o Drive)
 			
 			String serverName = "localhost:3306";
-			String dataBase = "db_projeto";
+			String dataBase = "db_projeto_final";
 			String url = "jdbc:mysql://" + serverName + "/" + dataBase;
 			String user = "root";
 			String password = "";

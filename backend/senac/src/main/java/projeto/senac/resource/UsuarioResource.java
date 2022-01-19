@@ -28,41 +28,41 @@ public class UsuarioResource {
     	
     	return response;
     }
-    
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("cadastrar")
-    public Response getUsuariosCadastro(Usuario usuario) {
-    	UsuarioDAO dao = new UsuarioDAO();
-    	dao.cadastrar(usuario);
-    	
-    	Response response = Response.ok().entity(true).build();
-    	return response;  
-    	
-    }
-    
-    @DELETE
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("excluir")
-    public Response getUsuariosExcluir(Usuario usuario) {
-    	UsuarioDAO dao = new UsuarioDAO();
-    	dao.excluir(usuario);
-    	
-    	Response response = Response.ok().entity(true).build();
-    	return response;  
-    	
-    }
-    
-    @PUT
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("alterar")
-    public Response getUsuariosAlterar(Usuario usuario) {
-    	UsuarioDAO dao = new UsuarioDAO();
-    	dao.alterar(usuario);
-    	
-    	Response response = Response.ok().entity(true).build();
-    	return response;
-    }
+//    
+//    @POST
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("cadastrar")
+//    public Response getUsuariosCadastro(Usuario usuario) {
+//    	UsuarioDAO dao = new UsuarioDAO();
+//    	dao.cadastrar(usuario);
+//    	
+//    	Response response = Response.ok().entity(true).build();
+//    	return response;  
+//    	
+//    }
+//    
+//    @DELETE
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("excluir")
+//    public Response getUsuariosExcluir(Usuario usuario) {
+//    	UsuarioDAO dao = new UsuarioDAO();
+//    	dao.excluir(usuario);
+//    	
+//    	Response response = Response.ok().entity(true).build();
+//    	return response;  
+//    	
+//    }
+//    
+//    @PUT
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("alterar")
+//    public Response getUsuariosAlterar(Usuario usuario) {
+//    	UsuarioDAO dao = new UsuarioDAO();
+//    	dao.alterar(usuario);
+//    	
+//    	Response response = Response.ok().entity(true).build();
+//    	return response;
+//    }
     
 //    @GET
 //    @Produces(MediaType.APPLICATION_JSON)
