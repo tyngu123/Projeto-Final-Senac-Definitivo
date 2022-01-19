@@ -47,20 +47,21 @@ CREATE TABLE endereco (
 		REFERENCES logradouro(id_logradouro)
 				ON UPDATE CASCADE
 				ON DELETE CASCADE,
-		 id_bairro INT NOT NULL,
+		nome_rua VARCHAR (500),
+		id_bairro INT NOT NULL,
         FOREIGN KEY (id_bairro)
 		REFERENCES bairro(id_bairro)
 				ON UPDATE CASCADE
 				ON DELETE CASCADE,
-                 id_municipio INT,
+		id_municipio INT,
         FOREIGN KEY (id_municipio)
 		REFERENCES municipio(id_municipio)
 				ON UPDATE CASCADE
 				ON DELETE CASCADE,
-                CEP VARCHAR(20) NOT NULL,
-                numero int NOT NULL,
-                complemento VARCHAR (15)
-			) ENGINE = innodb;    
+		CEP VARCHAR(20) NOT NULL,
+		numero int NOT NULL,
+		complemento VARCHAR (15)
+) ENGINE = innodb;    
 
 CREATE TABLE usuario (
 		id_usuario int PRIMARY KEY auto_increment,
