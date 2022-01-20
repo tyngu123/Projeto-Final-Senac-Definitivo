@@ -64,16 +64,16 @@ public class UsuarioResource {
 //    	return response;
 //    }
     
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("logar")
-//    public Response getUsuariosLogar(@QueryParam("email")String email,@QueryParam("senha")String senha) {
-//    	UsuarioDAO dao = new UsuarioDAO();
-//    	dao.executarLogin(email,senha);
-//    	
-//    	Response response = Response.ok().entity(true).build();
-//    	return response;
-//    }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("logar")
+    public Response getUsuariosLogar(@QueryParam("email")String email,@QueryParam("senha")String senha) {
+    	UsuarioDAO dao = new UsuarioDAO();
+    	dao.executarLogin(email,senha);
+    	
+    	Response response = Response.ok().entity(true).build();
+    	return response;
+    }
     
     
     

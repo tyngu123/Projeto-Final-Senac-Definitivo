@@ -34,11 +34,11 @@ public class UsuarioServico {
 ////		
 ////		return dao.procurarId(id);
 ////	}
-//	public Usuario logarUsuario(String email,String senha) {
-//		UsuarioDAO dao = new UsuarioDAO();
-//		
-//		return dao.executarLogin(email, senha);
-//	}
+	public Usuario logarUsuario(String email,String senha) {
+		UsuarioDAO dao = new UsuarioDAO();
+		
+		return dao.executarLogin(email, senha);
+	}
 //	
 //	public Usuario buscarUsuarioId(int id) {
 //		UsuarioDAO dao = new UsuarioDAO();

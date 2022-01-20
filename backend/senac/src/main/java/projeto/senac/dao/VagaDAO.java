@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import projeto.senac.modelo.Usuario;
+
 import projeto.senac.modelo.Vaga;
 
 public class VagaDAO {

@@ -91,21 +91,21 @@ public class MyResource {
 //    	return response;
 //    }
 //    
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//   // @Consumes(MediaType.APPLICATION_JSON)
-//    @Path("logar")
-//    public Response getLoginInfo(@QueryParam("email")String email,@QueryParam("senha")String senha) {
-//    	UsuarioServico servico = new UsuarioServico();
-//    	Usuario usuario = servico.logarUsuario(email,senha);
-//    	if(usuario.getId() != 0) {
-//        	Response response = Response.ok().entity(usuario).build();
-//        	return response;
-//        	} else {
-//        	Response response = Response.ok().entity("Usuário ou senha incorreto.").build();
-//            return response;
-//        	}
-//    }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+   // @Consumes(MediaType.APPLICATION_JSON)
+    @Path("logar")
+    public Response getLoginInfo(@QueryParam("email")String email,@QueryParam("senha")String senha) {
+    	UsuarioServico servico = new UsuarioServico();
+    	Usuario usuario = servico.logarUsuario(email,senha);
+    	if(usuario.getId_usuario() != 0) {
+        	Response response = Response.ok().entity(usuario).build();
+        	return response;
+        	} else {
+        	Response response = Response.ok().entity("Usuário ou senha incorreto.").build();
+            return response;
+        	}
+    }
 //
 //    @GET
 //    @Produces(MediaType.APPLICATION_JSON)
