@@ -27,10 +27,10 @@ public class UsuarioDAO {
 			while(rs.next()) {
 				u = new Usuario();
 				
-				u.setId(rs.getInt("id"));
+				u.setId_usuario(rs.getInt("id_usuario"));
 				u.setEmail(rs.getString("email"));
-				u.setNome(rs.getString("nome"));
-				u.setNascimento(rs.getDate("nascimento"));
+				u.setNome_completo(rs.getString("nome_completo"));
+				
 				u.setSenha(rs.getString("senha"));
 				
 				lista.add(u);
@@ -45,39 +45,45 @@ public class UsuarioDAO {
 	}
 	
 	public boolean cadastrar(Usuario usuario) {
-//		Connection cnx = Dao.getConexao();
-//		
-//		StringBuilder sql = new StringBuilder();
-//		
-//		sql.append("INSERT INTO usuario(email, nome, nascimento,senha) VALUES(?,?,?,?);");
-//		
-//		PreparedStatement ps; // 
-//		
-//		boolean retorno = true;
-//		
-//		
-//		try {
-//			ps = cnx.prepareStatement(sql.toString());
-//			
-//			
-//			
-//			ps.setString(1, usuario.getEmail());
-//			ps.setString(2, usuario.getNome());
-//			ps.setDate(3, new java.sql.Date(usuario.getNascimento().getTime()));	
-//			ps.setString(4, usuario.getSenha());	
-//			
-//			ps.execute();
-//			ps.close();
-//			cnx.close();
-//				
-//				
-//			}
-//		 catch (SQLException e) {
-//			e.printStackTrace();
-//			retorno = false;
-//		} 
-//		return retorno;
-//	}
+		Connection cnx = Dao.getConexao();
+		
+		StringBuilder sql = new StringBuilder();
+		
+		sql.append("INSERT INTO usuario(nome_completo, apelido, nascimento, documento, id_documento, id_endereco, email, senha, id_tipo) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+		
+		PreparedStatement ps; // 
+		
+		boolean retorno = true;
+		
+		
+		try {
+			ps = cnx.prepareStatement(sql.toString());
+			
+			
+			
+			ps.setString(1, usuario.getNome_completo());
+			ps.setString(2, usuario.getApelido());
+			ps.setDate(3, new java.sql.Date(usuario.getNascimento().getTime()));	
+			ps.setString(4, usuario.getDocumento());
+			ps.setInt(5, usuario.getTipoDocumento().getId_documento());
+			ps.setInt(6, usuario.getEndereco().getId_endereco());
+			ps.setString(7, usuario.getEmail());
+			ps.setString(8, usuario.getSenha());
+			ps.setInt(9, usuario.getTipoUsuario().getId_tipo());
+			
+			
+			ps.execute();
+			ps.close();
+			cnx.close();
+				
+				
+			}
+		 catch (SQLException e) {
+			e.printStackTrace();
+			retorno = false;
+		} 
+		return retorno;
+	}
 //	
 //	
 //	public boolean excluir(Usuario usuario) {
@@ -151,50 +157,51 @@ public class UsuarioDAO {
 //		return retorno;
 //	}
 //	
-//	public Usuario executarLogin(String email,String senha) {
-//		Connection cnx = Dao.getConexao();
-//		
-//		StringBuilder sql = new StringBuilder();
-//		
-//		sql.append("SELECT * FROM usuario WHERE email = ? AND senha = ?");
-//		
-//		PreparedStatement ps; // 
-//		
-//		//boolean retorno = true;
-//		Usuario u = new Usuario();
-//		
-//		try {
-//			ps = cnx.prepareStatement(sql.toString());
-//			
-//			
-//			
-//			
-//			ps.setString(1, email);
-//			ps.setString(2, senha);
-//				
-//			
-//			
-//				
-//			ResultSet rs = ps.executeQuery();
-//			
-//			while(rs.next()) {
-//				
-//				u.setId(rs.getInt("id"));
-//				u.setEmail(rs.getString("email"));
-//				u.setNome(rs.getString("nome"));
-//				u.setNascimento(rs.getDate("nascimento"));
-//				u.setSenha(rs.getString("senha"));
-//			}
-//			ps.execute();
-//			ps.close();
-//			cnx.close();
-//			}
-//		 catch (SQLException e) {
-//			e.printStackTrace();
-//			//retorno = false;
-//		} 
-//		return u;
-//	}
+	public Usuario executarLogin(String email,String senha) {
+		Connection cnx = Dao.getConexao();
+		
+		StringBuilder sql = new StringBuilder();
+		
+		sql.append("SELECT * FROM usuario WHERE email = ? AND senha = ?");
+		
+		PreparedStatement ps; // 
+		
+		//boolean retorno = true;
+		Usuario u = new Usuario();
+		
+		try {
+			ps = cnx.prepareStatement(sql.toString());
+			
+			
+			
+			
+			ps.setString(1, email);
+			ps.setString(2, senha);
+				
+			
+			
+				
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				u.setId_usuario(rs.getInt("id_usuario"));
+				u.setEmail(rs.getString("email"));
+				u.setNome_completo(rs.getString("nome_completo"));
+				u.setApelido(rs.getString("apelido"));
+				
+				
+			}
+			ps.execute();
+			ps.close();
+			cnx.close();
+			}
+		 catch (SQLException e) {
+			e.printStackTrace();
+			//retorno = false;
+		} 
+		return u;
+	}
 //	
 //	public Usuario buscarId(int id) {
 //		Connection cnx = Dao.getConexao();

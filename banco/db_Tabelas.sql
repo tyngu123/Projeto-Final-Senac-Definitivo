@@ -200,6 +200,7 @@ CREATE TABLE vagas (
         requisitos VARCHAR(200) NOT NULL
 )ENGINE = innodb;          
 
+
             
 
 

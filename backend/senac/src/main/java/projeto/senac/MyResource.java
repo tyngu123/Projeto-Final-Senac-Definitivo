@@ -12,7 +12,9 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import projeto.senac.modelo.Usuario;
+import projeto.senac.modelo.Vaga;
 import projeto.senac.servico.UsuarioServico;
+import projeto.senac.servico.VagaServico;
 /**
  * Root resource (exposed at "myresource" path)
  */
@@ -36,6 +38,18 @@ public class MyResource {
     public Response getUsuarios() {
     	UsuarioServico servico = new UsuarioServico();
     	List<Usuario> lista = servico.listarUsuarios();
+    	
+    	Response response = Response.ok().entity(lista).build();
+    	
+    	return response;
+    }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("listarVagas")
+    public Response getVaga() {
+    	VagaServico servico = new VagaServico();
+    	List<Vaga> lista = servico.listarVagas();
     	
     	Response response = Response.ok().entity(lista).build();
     	
@@ -77,21 +91,21 @@ public class MyResource {
 //    	return response;
 //    }
 //    
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//   // @Consumes(MediaType.APPLICATION_JSON)
-//    @Path("logar")
-//    public Response getLoginInfo(@QueryParam("email")String email,@QueryParam("senha")String senha) {
-//    	UsuarioServico servico = new UsuarioServico();
-//    	Usuario usuario = servico.logarUsuario(email,senha);
-//    	if(usuario.getId() != 0) {
-//        	Response response = Response.ok().entity(usuario).build();
-//        	return response;
-//        	} else {
-//        	Response response = Response.ok().entity("Usuário ou senha incorreto.").build();
-//            return response;
-//        	}
-//    }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+   // @Consumes(MediaType.APPLICATION_JSON)
+    @Path("logar")
+    public Response getLoginInfo(@QueryParam("email")String email,@QueryParam("senha")String senha) {
+    	UsuarioServico servico = new UsuarioServico();
+    	Usuario usuario = servico.logarUsuario(email,senha);
+    	if(usuario.getId_usuario() != 0) {
+        	Response response = Response.ok().entity(usuario).build();
+        	return response;
+        	} else {
+        	Response response = Response.ok().entity("Usuário ou senha incorreto.").build();
+            return response;
+        	}
+    }
 //
 //    @GET
 //    @Produces(MediaType.APPLICATION_JSON)
