@@ -85,6 +85,6 @@ join estado d
 on m.id_estado = d.id_estado;
 
 
-
+select * from vagas;
 
 drop database db_projeto_final;

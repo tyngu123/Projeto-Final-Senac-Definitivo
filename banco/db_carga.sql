@@ -7239,9 +7239,9 @@ INSERT INTO usuario(nome_completo, apelido, nascimento, documento, id_documento,
 
 
 
-INSERT INTO plano_cliente(planos, planos_descricao, plano_preco) VALUES('Free', 'Limitado', 00);
-INSERT INTO plano_cliente(planos, planos_descricao, plano_preco) VALUES('Premium', 'Ilimitado', 2990);
-INSERT INTO plano_cliente(planos, planos_descricao, plano_preco) VALUES('Empresarial', 'Cadastro de Vagas', 4999);
+INSERT INTO plano_cliente(planos, planos_descricao, planos_preco) VALUES('Free', 'Limitado', 00);
+INSERT INTO plano_cliente(planos, planos_descricao, planos_preco) VALUES('Premium', 'Ilimitado', 2222);
+INSERT INTO plano_cliente(planos, planos_descricao, planos_preco) VALUES('Empresarial', 'Cadastro de Vagas', 4999);
 INSERT INTO plano_cliente(planos, planos_descricao) VALUES('Administrador', 'Administra o app');
 
 INSERT INTO funcionalidade(fun, fun_descricao) VALUES ('Free', 'Tem acesso limitado das vagas, com algumas informações faltando da vaga');
