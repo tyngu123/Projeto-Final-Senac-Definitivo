@@ -29,9 +29,9 @@ public class EnderecoDAO {
 			ps.setString(2, endereco.getNome_rua());
 			ps.setInt(3, endereco.getBairro().getId_bairro());
 			ps.setInt(4, endereco.getMunicipio().getId_municipio());
-			ps.setString(2, endereco.getCep());
-			ps.setInt(2, endereco.getNumero());
-			ps.setString(2, endereco.getComplemento());
+			ps.setString(5, endereco.getCep());
+			ps.setInt(6, endereco.getNumero());
+			ps.setString(7, endereco.getComplemento());
 			
 			ps.execute();
 			ps.close();
