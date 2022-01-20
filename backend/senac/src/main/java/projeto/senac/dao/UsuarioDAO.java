@@ -27,10 +27,10 @@ public class UsuarioDAO {
 			while(rs.next()) {
 				u = new Usuario();
 				
-				u.setId(rs.getInt("id"));
+				u.setId_usuario(rs.getInt("id_usuario"));
 				u.setEmail(rs.getString("email"));
-				u.setNome(rs.getString("nome"));
-				u.setNascimento(rs.getDate("nascimento"));
+				u.setNome_completo(rs.getString("nome_completo"));
+				
 				u.setSenha(rs.getString("senha"));
 				
 				lista.add(u);
@@ -44,7 +44,7 @@ public class UsuarioDAO {
 		
 	}
 	
-	public boolean cadastrar(Usuario usuario) {
+//	public boolean cadastrar(Usuario usuario) {
 //		Connection cnx = Dao.getConexao();
 //		
 //		StringBuilder sql = new StringBuilder();

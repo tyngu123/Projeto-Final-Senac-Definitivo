@@ -25,6 +25,10 @@ public class Vaga {
 		this.requisitos = requisitos;
 	}
 
+	public Vaga() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId_vagas() {
 		return id_vagas;
 	}

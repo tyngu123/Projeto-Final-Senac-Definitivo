@@ -27,6 +27,10 @@ public class Usuario {
 		this.senha = senha;
 	}
 
+	public Usuario() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId_usuario() {
 		return id_usuario;
 	}

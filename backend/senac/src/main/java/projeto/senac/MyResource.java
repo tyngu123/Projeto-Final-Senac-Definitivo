@@ -12,7 +12,9 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import projeto.senac.modelo.Usuario;
+import projeto.senac.modelo.Vaga;
 import projeto.senac.servico.UsuarioServico;
+import projeto.senac.servico.VagaServico;
 /**
  * Root resource (exposed at "myresource" path)
  */
@@ -36,6 +38,18 @@ public class MyResource {
     public Response getUsuarios() {
     	UsuarioServico servico = new UsuarioServico();
     	List<Usuario> lista = servico.listarUsuarios();
+    	
+    	Response response = Response.ok().entity(lista).build();
+    	
+    	return response;
+    }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("listarVagas")
+    public Response getVaga() {
+    	VagaServico servico = new VagaServico();
+    	List<Vaga> lista = servico.listarVagas();
     	
     	Response response = Response.ok().entity(lista).build();
     	

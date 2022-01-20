@@ -2,21 +2,21 @@ package projeto.senac.modelo;
 
 public class AssinaturaCliente {
 
-	private int id_ass_cli;
+	private int id_assinatura;
 	private Usuario usuario;
 	private PlanoCliente planoCliente;
 	
-	public AssinaturaCliente(int id_ass_cli) {
+	public AssinaturaCliente(int id_assinatura) {
 		super();
-		this.id_ass_cli = id_ass_cli;
+		this.id_assinatura = id_assinatura;
 	}
 
-	public int getId_ass_cli() {
-		return id_ass_cli;
+	public int getId_assinatura() {
+		return id_assinatura;
 	}
 
-	public void setId_ass_cli(int id_ass_cli) {
-		this.id_ass_cli = id_ass_cli;
+	public void setId_assinatura(int id_assinatura) {
+		this.id_assinatura = id_assinatura;
 	}
 
 	public Usuario getUsuario() {
