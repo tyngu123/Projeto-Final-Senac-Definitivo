@@ -7,11 +7,11 @@ import { VagasService } from 'src/app/services/vagas.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-cadastro-vagas',
-  templateUrl: './cadastro-vagas.page.html',
-  styleUrls: ['./cadastro-vagas.page.scss'],
+  selector: 'app-vagas',
+  templateUrl: './vagas.page.html',
+  styleUrls: ['./vagas.page.scss'],
 })
-export class CadastroVagasPage implements OnInit {
+export class VagasPage implements OnInit {
   public vaga: Vagas = {
     id: '',
     vaga: '',

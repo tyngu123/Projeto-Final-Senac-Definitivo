@@ -6,11 +6,11 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
-  selector: 'app-cadastro',
-  templateUrl: './cadastro.page.html',
-  styleUrls: ['./cadastro.page.scss'],
+  selector: 'app-user',
+  templateUrl: './user.page.html',
+  styleUrls: ['./user.page.scss'],
 })
-export class CadastroPage implements OnInit {
+export class UserPage implements OnInit {
   @ViewChild(IonSlides) slides: IonSlides;
   public userLogin: User = {};
   public userRegister: User = {};

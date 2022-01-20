@@ -14,11 +14,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/telainicial/telainicial.module').then( m => m.TelainicialPageModule)
   },
   {
-    path: 'pages/cadastro',
-    loadChildren: () => import('./pages/cadastro/cadastro.module').then( m => m.CadastroPageModule),
-    canActivate: [LoginGuard]
-  },
-  {
     path: 'pages/login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
     canActivate: [LoginGuard]
@@ -38,16 +33,6 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   
-  {
-    path: 'pages/cadastro-vagas',
-    loadChildren: () => import('./pages/cadastro-vagas/cadastro-vagas.module').then( m => m.CadastroVagasPageModule),
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'pages/cadastro-vagas/:id',
-    loadChildren: () => import('./pages/cadastro-vagas/cadastro-vagas.module').then( m => m.CadastroVagasPageModule),
-    canActivate: [AuthGuard]
-  },
   {
     path: 'pages/checkout',
     loadChildren: () => import('./pages/checkout/checkout.module').then( m => m.CheckoutPageModule),
@@ -74,6 +59,22 @@ const routes: Routes = [
     path: 'pages/admin',
     loadChildren: () => import('./pages/admin/admin.module').then( m => m.AdminPageModule)
   },
+  {
+    path: 'pages/user',
+    loadChildren: () => import('./pages/user/user.module').then( m => m.UserPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'pages/vagas',
+    loadChildren: () => import('./pages/vagas/vagas.module').then( m => m.VagasPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'pages/vagas/:id',
+    loadChildren: () => import('./pages/vagas/vagas.module').then( m => m.VagasPageModule),
+    canActivate: [AuthGuard]
+  },
+
 
 ];
 
