@@ -86,38 +86,38 @@ public class UsuarioDAO {
 	}
 //	
 //	
-//	public boolean excluir(Usuario usuario) {
-//		Connection cnx = Dao.getConexao();
-//		
-//		StringBuilder sql = new StringBuilder();
-//		
-//		sql.append("DELETE FROM usuario WHERE id = ?");
-//		
-//		PreparedStatement ps; // 
-//		
-//		boolean retorno = true;
-//		
-//		
-//		try {
-//			ps = cnx.prepareStatement(sql.toString());
-//			
-//			
-//			
-//			ps.setInt(1, usuario.getId());
-//				
-//			
-//			ps.execute();
-//			ps.close();
-//			cnx.close();
-//				
-//				
-//			}
-//		 catch (SQLException e) {
-//			e.printStackTrace();
-//			retorno = false;
-//		} 
-//		return retorno;
-//	}
+	public boolean excluir(Usuario usuario) {
+		Connection cnx = Dao.getConexao();
+		
+		StringBuilder sql = new StringBuilder();
+		
+		sql.append("DELETE FROM usuario WHERE id_usuario = ?");
+		
+		PreparedStatement ps; // 
+		
+		boolean retorno = true;
+		
+		
+		try {
+			ps = cnx.prepareStatement(sql.toString());
+			
+			
+			
+			ps.setInt(1, usuario.getId_usuario());
+				
+			
+			ps.execute();
+			ps.close();
+			cnx.close();
+				
+				
+			}
+		 catch (SQLException e) {
+			e.printStackTrace();
+			retorno = false;
+		} 
+		return retorno;
+	}
 //	
 //	public boolean alterar(Usuario usuario) {
 //		Connection cnx = Dao.getConexao();

@@ -20,6 +20,12 @@ public class Endereco {
 		this.complemento = complemento;
 	}
 
+	public Endereco() {
+		// TODO Auto-generated constructor stub
+	}
+
+	
+
 	public int getId_endereco() {
 		return id_endereco;
 	}

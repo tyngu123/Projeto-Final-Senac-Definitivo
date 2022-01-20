@@ -22,11 +22,11 @@ public class UsuarioServico {
 		return dao.cadastrar(usuario);
 	}
 //	
-//	public boolean excluirUsuarios(Usuario usuario) {
-//		UsuarioDAO dao = new UsuarioDAO();
-//		
-//		return dao.excluir(usuario);
-//	}
+	public boolean excluirUsuarios(Usuario usuario) {
+		UsuarioDAO dao = new UsuarioDAO();
+		
+		return dao.excluir(usuario);
+	}
 //	
 //	public boolean alterarUsuarios(Usuario usuario) {
 //		UsuarioDAO dao = new UsuarioDAO();
