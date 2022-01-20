@@ -12,8 +12,8 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 })
 export class UserPage implements OnInit {
   @ViewChild(IonSlides) slides: IonSlides;
-  public userLogin: User = {};
-  public userRegister: User = {};
+  //public userLogin: User = {};
+ // public userRegister: User = {};
   private loading: any;
 
   constructor(
@@ -39,8 +39,8 @@ export class UserPage implements OnInit {
     await this.presentLoading();
 
     try {
-      const newUser = await this.authService.register(this.userRegister);
-      await this.afs.collection('user').doc(newUser.user.uid).set(this.userRegister);
+     // const newUser = await this.authService.register(this.userRegister);
+    //  await this.afs.collection('user').doc(newUser.user.uid).set(this.userRegister);
     } catch (error) {
       let menssage: string;
 
@@ -79,8 +79,8 @@ export class UserPage implements OnInit {
     await this.presentLoading();
 
     try {
-      const newUser = await this.authService.register(this.userRegister);
-      await this.afs.collection('userEmpresa').doc(newUser.user.uid).set(this.userRegister);
+     // const newUser = await this.authService.register(this.userRegister);
+     // await this.afs.collection('userEmpresa').doc(newUser.user.uid).set(this.userRegister);
     } catch (error) {
       let menssage: string;
 

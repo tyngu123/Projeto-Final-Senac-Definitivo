@@ -9,8 +9,8 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  public userLogin: User = {};
-  public userRegister: User = {};
+  //public userLogin: User = {};
+  //public userRegister: User = {};
   private loading: any;
   
   constructor(
@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
     await this.presentLoading();
 
     try {
-      await this.authService.login(this.userLogin);
+     // await this.authService.login(this.userLogin);
     } catch (error) {
       let menssage: string;
 

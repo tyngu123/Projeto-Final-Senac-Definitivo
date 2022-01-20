@@ -16,12 +16,12 @@ const routes: Routes = [
   {
     path: 'pages/login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
-    canActivate: [LoginGuard]
+    
   },
   {
     path: 'pages/assinaturas',
     loadChildren: () => import('./pages/assinaturas/assinaturas.module').then( m => m.AssinaturasPageModule),
-    canActivate: [AuthGuard]
+    
   },
   {
     path: 'pages/settings',
@@ -30,18 +30,18 @@ const routes: Routes = [
   {
     path: 'pages/logout',
     loadChildren: () => import('./pages/logout/logout.module').then( m => m.LogoutPageModule),
-    canActivate: [AuthGuard]
+    
   },
   
   {
     path: 'pages/checkout',
     loadChildren: () => import('./pages/checkout/checkout.module').then( m => m.CheckoutPageModule),
-    canActivate: [AuthGuard]
+    
   },
   {
     path: 'pages/vagas-ativas',
     loadChildren: () => import('./pages/vagas-ativas/vagas-ativas.module').then( m => m.VagasAtivasPageModule),
-    canActivate: [AuthGuard]
+    
   },
   {
     path: 'pages/detalhes-vaga',
@@ -56,23 +56,19 @@ const routes: Routes = [
     loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
   },
   {
-    path: 'pages/admin',
-    loadChildren: () => import('./pages/admin/admin.module').then( m => m.AdminPageModule)
-  },
-  {
     path: 'pages/user',
     loadChildren: () => import('./pages/user/user.module').then( m => m.UserPageModule),
-    canActivate: [AuthGuard]
+    
   },
   {
     path: 'pages/vagas',
     loadChildren: () => import('./pages/vagas/vagas.module').then( m => m.VagasPageModule),
-    canActivate: [AuthGuard]
+    
   },
   {
     path: 'pages/vagas/:id',
     loadChildren: () => import('./pages/vagas/vagas.module').then( m => m.VagasPageModule),
-    canActivate: [AuthGuard]
+  
   },
 
 
