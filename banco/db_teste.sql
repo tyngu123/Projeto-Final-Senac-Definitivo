@@ -85,6 +85,6 @@ join estado d
 on m.id_estado = d.id_estado;
 
 
-
+select * from plano_cliente
 
 drop database db_projeto_final;

@@ -134,7 +134,7 @@ CREATE TABLE assinatura_do_cliente (
 				ON DELETE CASCADE 
 )ENGINE = innodb; 
 
-CREATE TABLE C7artao (
+CREATE TABLE Cartao (
 		id_cartao INT primary key auto_increment,
 		numero VARCHAR(45),
 		data_validade VARCHAR(5),
@@ -200,6 +200,7 @@ CREATE TABLE vagas (
         requisitos VARCHAR(200) NOT NULL
 )ENGINE = innodb;          
 
+drop database db_projeto_final;
             
 
 
