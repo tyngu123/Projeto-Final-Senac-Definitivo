@@ -200,7 +200,7 @@ CREATE TABLE vagas (
         requisitos VARCHAR(200) NOT NULL
 )ENGINE = innodb;          
 
-drop database db_projeto_final;
+
             
 
 
