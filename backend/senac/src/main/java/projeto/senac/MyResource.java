@@ -56,29 +56,29 @@ public class MyResource {
     	return response;
     }
     
-//    @POST
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("cadastrar")
-//    public Response postUsuario(Usuario usuario) {
-//    	UsuarioServico servico = new UsuarioServico();
-//    	servico.cadastrarUsuarios(usuario);
-//    	
-//    	Response response = Response.ok().entity(true).build();
-//    	return response;
-//    	
-//    }
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("cadastrar")
+    public Response postUsuario(Usuario usuario) {
+    	UsuarioServico servico = new UsuarioServico();
+    	servico.cadastrarUsuarios(usuario);
+    	
+    	Response response = Response.ok().entity(true).build();
+    	return response;
+    	
+    }
 //    
-//    @DELETE
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("excluir")
-//    public Response deleteUsuario(Usuario usuario) {
-//    	UsuarioServico servico = new UsuarioServico();
-//    	servico.excluirUsuarios(usuario);
-//    	
-//    	Response response = Response.ok().entity(true).build();
-//    	return response;  
-//    	
-//    }
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("excluir")
+    public Response deleteUsuario(Usuario usuario) {
+    	UsuarioServico servico = new UsuarioServico();
+    	servico.excluirUsuarios(usuario);
+    	
+    	Response response = Response.ok().entity(true).build();
+    	return response;  
+    	
+    }
 //    
 //    @PUT
 //    @Produces(MediaType.APPLICATION_JSON)
