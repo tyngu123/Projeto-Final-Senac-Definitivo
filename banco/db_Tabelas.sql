@@ -170,11 +170,16 @@ CREATE TABLE forma_de_pagamento (
 CREATE TABLE venda(
 		id_venda INT,
 		data_venda DATE,
-		id_plano INT,
-        valor DECIMAL (4,2),
+		id_plano INT, 
         FOREIGN KEY (id_plano)
 		REFERENCES plano_cliente(id_plano)
             ON UPDATE CASCADE
+            ON DELETE CASCADE,
+        valor DECIMAL (4,2),
+        id_usuario INT,
+        FOREIGN KEY (id_usuario)
+        REFERENCES usuario(id_usuario)
+			ON UPDATE CASCADE
             ON DELETE CASCADE,
 		id_forma_pagamento int,
         foreign key (id_forma_pagamento)

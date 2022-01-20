@@ -7280,35 +7280,48 @@ INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (21,3);
 
 
 
-INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('2563 2541 8569 8547','05/25','CARLOS E DA SILVA','423','Debito','Santander');
-INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('3698 8741 8523 7456','01/22','JOSE A REBELLO','461','Credito','Itau');
-INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('7531 2551 8699 8847','08/25','HYGOR H SOUZA','589','Debito','Bradesco');
-INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('1507 8242 3247 0484','08/27','JOAO P S MENEZES','423','Debito','Itaú');
-INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('9364 9725 6247 8447','07/22','LEONARDO ROCHA','461','Credito','Inter');
-INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('7531 2551 8699 8847','12/25','HYGOR H SOUZA','589','Credito','Santander');
-INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('5371 5521 6989 8487','11/24','PEDRO H IGLESIAS','289','Debito','Bradesco');
-INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('3175 5125 9986 7124','07/28','FABIANO MOREIRA','123','Debito','Banco do Brasil');
+INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('2563 2541 8569 8547','05/25','DANILO N TEC','423','Debito','Santander');
+INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('3698 8741 8523 7456','01/22','BAZAR J JUNIOR','461','Credito','Itau');
+INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('7531 2551 8699 8847','08/25','LEONARDO S','589','Debito','Bradesco');
+INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('1507 8242 3247 0484','08/27','MARIA E ALBERTO DE JESUS','423','Debito','Itaú');
+INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('9364 9725 6247 8447','07/22','SARA S','461','Credito','Inter');
+INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('7531 2551 8699 8847','12/25','MARIA C PAIVA','589','Credito','Santander');
+INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('5371 5521 6989 8487','11/24','JOAO V SOUZA LIMA','289','Debito','Bradesco');
+INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('3175 5125 9986 7124','07/28','CRISTOFER R NASCIMENTO','123','Debito','Banco do Brasil');
 
 
 INSERT INTO pix(nome_beneficiario, chave_pix) VALUES('Vagasbundo', '2432015');
-INSERT INTO pix(nome_beneficiario, chave_pix) VALUES('Vagasbundo', '2432015');
-INSERT INTO pix(nome_beneficiario, chave_pix) VALUES('Vagasbundo', '2432015');
-INSERT INTO pix(nome_beneficiario, chave_pix) VALUES('Vagasbundo', '2432015');
-INSERT INTO pix(nome_beneficiario, chave_pix) VALUES('Vagasbundo', '2432015');
-INSERT INTO pix(nome_beneficiario, chave_pix) VALUES('Vagasbundo', '2432015');
-INSERT INTO pix(nome_beneficiario, chave_pix) VALUES('Vagasbundo', '2432015');
-INSERT INTO pix(nome_beneficiario, chave_pix) VALUES('Vagasbundo', '2432015');
-
 
 
 INSERT INTO forma_de_pagamento (id_pix) VALUES(1);
+INSERT INTO forma_de_pagamento (id_cartao) VALUES(1);
+INSERT INTO forma_de_pagamento (id_pix) VALUES(1);
 INSERT INTO forma_de_pagamento (id_cartao) VALUES(2);
-INSERT INTO forma_de_pagamento (id_pix) VALUES(2);
+INSERT INTO forma_de_pagamento (id_cartao) VALUES(3);
+INSERT INTO forma_de_pagamento (id_pix) VALUES(1);
+INSERT INTO forma_de_pagamento (id_cartao) VALUES(4);
+INSERT INTO forma_de_pagamento (id_pix) VALUES(1);
+INSERT INTO forma_de_pagamento (id_cartao) VALUES(5);
+INSERT INTO forma_de_pagamento (id_cartao) VALUES(6);
+INSERT INTO forma_de_pagamento (id_cartao) VALUES(7);
+INSERT INTO forma_de_pagamento (id_pix) VALUES(1);
+INSERT INTO forma_de_pagamento (id_cartao) VALUES(8);
 
 
-INSERT INTO venda(data_venda, id_plano) VALUES('2022-05-22', 2);
-INSERT INTO venda(data_venda, id_plano) VALUES('2022-09-28', 2);
-INSERT INTO venda(data_venda, id_plano) VALUES('2022-06-10', 3);
+INSERT INTO venda(data_venda, id_plano, valor, id_usuario, id_forma_pagamento) VALUES('2022-05-22', 2, 29, 3, 1);
+INSERT INTO venda(data_venda, id_plano, valor, id_usuario, id_forma_pagamento) VALUES('2022-09-28', 2, 49, 4, 2); 
+INSERT INTO venda(data_venda, id_plano, valor, id_usuario, id_forma_pagamento) VALUES('2022-06-10', 3, 29, 5, 3);
+INSERT INTO venda(data_venda, id_plano, valor, id_usuario, id_forma_pagamento) VALUES('2022-06-10', 3, 49, 7, 4);
+INSERT INTO venda(data_venda, id_plano, valor, id_usuario, id_forma_pagamento) VALUES('2022-06-10', 3, 49, 9, 5);
+INSERT INTO venda(data_venda, id_plano, valor, id_usuario, id_forma_pagamento) VALUES('2022-06-10', 3, 29, 12, 6);
+INSERT INTO venda(data_venda, id_plano, valor, id_usuario, id_forma_pagamento) VALUES('2022-06-10', 3, 49, 13, 7);
+INSERT INTO venda(data_venda, id_plano, valor, id_usuario, id_forma_pagamento) VALUES('2022-06-10', 3, 49, 14, 8);
+INSERT INTO venda(data_venda, id_plano, valor, id_usuario, id_forma_pagamento) VALUES('2022-06-10', 3, 29, 15, 9);
+INSERT INTO venda(data_venda, id_plano, valor, id_usuario, id_forma_pagamento) VALUES('2022-06-10', 3, 29, 17, 10);
+INSERT INTO venda(data_venda, id_plano, valor, id_usuario, id_forma_pagamento) VALUES('2022-06-10', 3, 29, 18, 11);
+INSERT INTO venda(data_venda, id_plano, valor, id_usuario, id_forma_pagamento) VALUES('2022-06-10', 3, 29, 20, 12);
+INSERT INTO venda(data_venda, id_plano, valor, id_usuario, id_forma_pagamento) VALUES('2022-06-10', 3, 49, 21, 13);
+
 
 
 
@@ -7320,4 +7333,8 @@ INSERT INTO venda(data_venda, id_plano) VALUES('2022-06-10', 3);
 INSERT INTO vagas(id_usuario, titulo, descricao, salario, beneficio, carga_horaria, estado, requisitos) VALUES(4,'Assistente de TI', 'Suporte e Manutenção', 2000, 'Vale Trasporte', '8hrs', 'Rio de Janeiro', 'Tecnico em TI Completo');
 INSERT INTO vagas(id_usuario, titulo, descricao, salario, beneficio, carga_horaria, estado, requisitos) VALUES(7, 'Auxiliar Administrativo', 'Auxiliar em Administração e Vendas', 4500, 'Vale Trasporte e Vale alimentação', '8hrs', 'Niteroi', 'Tecnico e Graduação Completo em Administração');
 INSERT INTO vagas(id_usuario, titulo, descricao, salario, beneficio, carga_horaria, estado, requisitos) VALUES(9, 'Tecnico em Enfermagem', 'Realizar procedimentos, como retirada de sangue', 6500, 'Vale Trasporte e Vale Alimentação', '12hrs', 'Rio de Janeiro', 'Tecnico em Enfermagem Completo');
-
+INSERT INTO vagas(id_usuario, titulo, descricao, salario, beneficio, carga_horaria, estado, requisitos) VALUES(13, 'Mecanico', 'Procuro mecanico com experiencia para realizar qualquer tarefa', 2200, 'Vale Alimentação', '8hrs', 'São Paulo', '');
+INSERT INTO vagas(id_usuario, titulo, descricao, salario, beneficio, carga_horaria, estado, requisitos) VALUES(14, 'Pintor', 'Procuro pintor que possa ter a disponibilidade de tabalhar tempo integral', 6000, 'Vale Alimentação', '24hrs', 'Minas Gerais', 'Saber realizar grafiates');
+INSERT INTO vagas(id_usuario, titulo, descricao, salario, beneficio, carga_horaria, estado, requisitos) VALUES(21, 'Professor de Biologia', 'Professor de Biologia para trabalhar em universidade', 35200, 'Vale Alimentação, transporte, bonus', '8hrs', 'São Paulo', 'Mestrado e Doutorado');
+INSERT INTO vagas(id_usuario, titulo, descricao, salario, beneficio, carga_horaria, estado, requisitos) VALUES(21,'Assistente de Serviçoes gerais', 'Manutenção em ambientes e construções', 2000, 'Vale Trasporte', '8hrs', 'Rio de Janeiro', '');
+INSERT INTO vagas(id_usuario, titulo, descricao, salario, beneficio, carga_horaria, estado, requisitos) VALUES(9,'Secretaria', 'necessita-se de uma secretaria disposta a assumir qualquer trabalho exigido', 2500, 'Vale Transporte e Vale Alimentação', '8hrs', 'Roraima', 'word e excel');

@@ -28,19 +28,7 @@ join tipo_usuario t
 on r.id_tipo= t.id_tipo
 join funcionalidade f
 on f.id_fun = r.id_fun
-where t.descricao = 'Premium';
-
-
-select* from empresa e
-join tipo_usuario t
-on e.id_tipo = t.id_tipo
-join assinatura_do_cliente a
-on e.id_empresa = a.id_empresa
-join plano_cliente p
-on p.id_assinatura = a.id_assinatura;
-
-select *from empresa;
-
+where t.descricao = 'Empresarial';
 
 
 
