@@ -44,40 +44,46 @@ public class UsuarioDAO {
 		
 	}
 	
-//	public boolean cadastrar(Usuario usuario) {
-//		Connection cnx = Dao.getConexao();
-//		
-//		StringBuilder sql = new StringBuilder();
-//		
-//		sql.append("INSERT INTO usuario(email, nome, nascimento,senha) VALUES(?,?,?,?);");
-//		
-//		PreparedStatement ps; // 
-//		
-//		boolean retorno = true;
-//		
-//		
-//		try {
-//			ps = cnx.prepareStatement(sql.toString());
-//			
-//			
-//			
-//			ps.setString(1, usuario.getEmail());
-//			ps.setString(2, usuario.getNome());
-//			ps.setDate(3, new java.sql.Date(usuario.getNascimento().getTime()));	
-//			ps.setString(4, usuario.getSenha());	
-//			
-//			ps.execute();
-//			ps.close();
-//			cnx.close();
-//				
-//				
-//			}
-//		 catch (SQLException e) {
-//			e.printStackTrace();
-//			retorno = false;
-//		} 
-//		return retorno;
-//	}
+	public boolean cadastrar(Usuario usuario) {
+		Connection cnx = Dao.getConexao();
+		
+		StringBuilder sql = new StringBuilder();
+		
+		sql.append("INSERT INTO usuario(nome_completo, apelido, nascimento, documento, id_documento, id_endereco, email, senha, id_tipo) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+		
+		PreparedStatement ps; // 
+		
+		boolean retorno = true;
+		
+		
+		try {
+			ps = cnx.prepareStatement(sql.toString());
+			
+			
+			
+			ps.setString(1, usuario.getNome_completo());
+			ps.setString(2, usuario.getApelido());
+			ps.setDate(3, new java.sql.Date(usuario.getNascimento().getTime()));	
+			ps.setString(4, usuario.getDocumento());
+			ps.setInt(5, usuario.getTipoDocumento().getId_documento());
+			ps.setInt(6, usuario.getEndereco().getId_endereco());
+			ps.setString(7, usuario.getEmail());
+			ps.setString(8, usuario.getSenha());
+			ps.setInt(9, usuario.getTipoUsuario().getId_tipo());
+			
+			
+			ps.execute();
+			ps.close();
+			cnx.close();
+				
+				
+			}
+		 catch (SQLException e) {
+			e.printStackTrace();
+			retorno = false;
+		} 
+		return retorno;
+	}
 //	
 //	
 //	public boolean excluir(Usuario usuario) {

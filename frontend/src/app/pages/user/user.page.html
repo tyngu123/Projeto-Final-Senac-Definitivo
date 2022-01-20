@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Cadastro</ion-title>
+    <ion-menu-button slot="start" color="light"></ion-menu-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  class="swiper-no-swiping">
+
+    <div class="center space-above">
+      <ion-img src="../../../assets/mastervagas.png"></ion-img>
+    </div>
+  
+    <form class="wrap-input">
+      <div>
+        <div class="wrap-input">
+          <input class="input" type="text" name="name" placeholder="NOME" [(ngModel)]="userRegister.nome">
+        </div>
+        <div class="wrap-input">
+          <input class="input" type="text" name="lastname" placeholder="SOBRENOME" [(ngModel)]="userRegister.sobrenome">
+        </div>
+        <div class="wrap-input">
+          <input class="input" type="date" name="date" placeholder="DATA DE NASCIMENTO" [(ngModel)]="userRegister.data">
+        </div>
+    
+        <div class="wrap-input">
+          <input class="input" type="number" name="cpf" placeholder="CPF" [(ngModel)]="userRegister.cpf">
+        </div>
+    
+        <div class="wrap-input">
+          <input class="input" type="text" name="endereco" placeholder="ENDEREÇO"[(ngModel)]="userRegister.endereco"> 
+        </div>
+    
+        <div class="wrap-input">
+          <input class="input" type="text" name="municipio" placeholder="MUNICÍPIO" [(ngModel)]="userRegister.municipio">
+        </div>
+    
+        <div class="wrap-input">
+          <input class="input" type="text" name="bairro" placeholder="BAIRRO" [(ngModel)]="userRegister.bairro">
+        </div>
+    
+        <div class="wrap-input">
+          <input class="input" type="text" name="estado" placeholder="ESTADO" [(ngModel)]="userRegister.estado">
+        </div>
+    
+        <div class="wrap-input">
+          <input class="input" type="number" name="cep" placeholder="CEP" [(ngModel)]="userRegister.cep">
+        </div>
+    
+        <div class="wrap-input">
+          <input class="input" type="email" name="emailusuario" placeholder="EMAIL" [(ngModel)]="userRegister.email">
+        </div>
+    
+        <div class="wrap-input">
+          <input class="input" type="password" name="passwordusuario" placeholder="SENHA" [(ngModel)]="userRegister.password">
+        </div>
+        <div class="wrap-input">
+          <input class="input" type="password" name="password" placeholder="CONFIRMAR SENHA">
+        </div>
+    
+    
+      <div class="container-form-btn">
+          <button class="form-btn custom-font" (click)="register()">Cadastrar
+          </button>
+      </div>
+    </div>
+  </form>
+
+</ion-content>
