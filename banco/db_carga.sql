@@ -7239,9 +7239,9 @@ INSERT INTO usuario(nome_completo, apelido, nascimento, documento, id_documento,
 
 
 
-INSERT INTO plano_cliente(planos, planos_descricao) VALUES('Free', 'Limitado');
-INSERT INTO plano_cliente(planos, planos_descricao) VALUES('Premium', 'Ilimitado');
-INSERT INTO plano_cliente(planos, planos_descricao) VALUES('Empresarial', 'Cadastro de Vagas');
+INSERT INTO plano_cliente(planos, planos_descricao, plano_preco) VALUES('Free', 'Limitado', 00);
+INSERT INTO plano_cliente(planos, planos_descricao, plano_preco) VALUES('Premium', 'Ilimitado', 2990);
+INSERT INTO plano_cliente(planos, planos_descricao, plano_preco) VALUES('Empresarial', 'Cadastro de Vagas', 4999);
 INSERT INTO plano_cliente(planos, planos_descricao) VALUES('Administrador', 'Administra o app');
 
 INSERT INTO funcionalidade(fun, fun_descricao) VALUES ('Free', 'Tem acesso limitado das vagas, com algumas informações faltando da vaga');
@@ -7256,20 +7256,27 @@ INSERT INTO relacao( id_tipo, id_fun, id_plano) VALUES ( 4, 4, 4);
 
 
 
-INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (1,2);
+INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (1,4);
 INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (2,1);
-INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (3,4);
-INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (4,2);
-INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (5,1);
+INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (3,2);
+INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (4,3);
+INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (5,2);
 INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (6,1);
-INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (7,1);
-INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (8,2);
-INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (9,2);
-INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (10,2);
+INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (7,3);
+INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (8,1);
+INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (9,3);
+INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (10,1);
 INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (11,1);
-INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (12,1);
-INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (6,3);
-INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (6,3);
+INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (12,2);
+INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (13,3);
+INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (14,3);
+INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (15,2);
+INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (16,1);
+INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (17,2);
+INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (18,2);
+INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (19,1);
+INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (20,2);
+INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (21,3);
 
 
 
@@ -7282,6 +7289,7 @@ INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES(
 INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('5371 5521 6989 8487','11/24','PEDRO H IGLESIAS','289','Debito','Bradesco');
 INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('3175 5125 9986 7124','07/28','FABIANO MOREIRA','123','Debito','Banco do Brasil');
 
+
 INSERT INTO pix(nome_beneficiario, chave_pix) VALUES('Vagasbundo', '2432015');
 INSERT INTO pix(nome_beneficiario, chave_pix) VALUES('Vagasbundo', '2432015');
 INSERT INTO pix(nome_beneficiario, chave_pix) VALUES('Vagasbundo', '2432015');
@@ -7293,9 +7301,9 @@ INSERT INTO pix(nome_beneficiario, chave_pix) VALUES('Vagasbundo', '2432015');
 
 
 
-INSERT INTO forma_de_pagamento (id_cartao,  id_pix) VALUES(1,1);
-INSERT INTO forma_de_pagamento (id_cartao, id_pix) VALUES(2,2);
-INSERT INTO forma_de_pagamento (id_cartao, id_pix) VALUES(3,3);
+INSERT INTO forma_de_pagamento (id_pix) VALUES(1);
+INSERT INTO forma_de_pagamento (id_cartao) VALUES(2);
+INSERT INTO forma_de_pagamento (id_pix) VALUES(2);
 
 
 INSERT INTO venda(data_venda, id_plano) VALUES('2022-05-22', 2);

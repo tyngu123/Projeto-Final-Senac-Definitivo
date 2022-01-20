@@ -134,7 +134,7 @@ CREATE TABLE assinatura_do_cliente (
 				ON DELETE CASCADE 
 )ENGINE = innodb; 
 
-CREATE TABLE Cartao (
+CREATE TABLE C7artao (
 		id_cartao INT primary key auto_increment,
 		numero VARCHAR(45),
 		data_validade VARCHAR(5),
