@@ -7,12 +7,8 @@ INSERT INTO tipo_usuario(descricao) VALUES('Admin');
 
 
 
-
-
-
 INSERT INTO tipo_documento(descricao) VALUES('CPF');
 INSERT INTO tipo_documento(descricao) VALUES('CNPJ');
-
 
 
 INSERT INTO bairro (descricao) VALUES ('Centro');
@@ -7240,8 +7236,8 @@ INSERT INTO usuario(nome_completo, apelido, nascimento, documento, id_documento,
 
 
 INSERT INTO plano_cliente(planos, planos_descricao, planos_preco) VALUES('Free', 'Limitado', 00);
-INSERT INTO plano_cliente(planos, planos_descricao, planos_preco) VALUES('Premium', 'Ilimitado', 2222);
-INSERT INTO plano_cliente(planos, planos_descricao, planos_preco) VALUES('Empresarial', 'Cadastro de Vagas', 4999);
+INSERT INTO plano_cliente(planos, planos_descricao, planos_preco) VALUES('Premium', 'Ilimitado', 29);
+INSERT INTO plano_cliente(planos, planos_descricao, planos_preco) VALUES('Empresarial', 'Cadastro de Vagas', 49);
 INSERT INTO plano_cliente(planos, planos_descricao) VALUES('Administrador', 'Administra o app');
 
 INSERT INTO funcionalidade(fun, fun_descricao) VALUES ('Free', 'Tem acesso limitado das vagas, com algumas informações faltando da vaga');
@@ -7321,13 +7317,6 @@ INSERT INTO venda(data_venda, id_plano, valor, id_usuario, id_forma_pagamento) V
 INSERT INTO venda(data_venda, id_plano, valor, id_usuario, id_forma_pagamento) VALUES('2022-06-10', 3, 29, 18, 11);
 INSERT INTO venda(data_venda, id_plano, valor, id_usuario, id_forma_pagamento) VALUES('2022-06-10', 3, 29, 20, 12);
 INSERT INTO venda(data_venda, id_plano, valor, id_usuario, id_forma_pagamento) VALUES('2022-06-10', 3, 49, 21, 13);
-
-
-
-
-
-
-
 
 
 INSERT INTO vagas(id_usuario, titulo, descricao, salario, beneficio, carga_horaria, estado, requisitos) VALUES(4,'Assistente de TI', 'Suporte e Manutenção', 2000, 'Vale Trasporte', '8hrs', 'Rio de Janeiro', 'Tecnico em TI Completo');
