@@ -41,17 +41,17 @@ public class UsuarioResource {
 //    	
 //    }
 //    
-//    @DELETE
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("excluir")
-//    public Response getUsuariosExcluir(Usuario usuario) {
-//    	UsuarioDAO dao = new UsuarioDAO();
-//    	dao.excluir(usuario);
-//    	
-//    	Response response = Response.ok().entity(true).build();
-//    	return response;  
-//    	
-//    }
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("excluir")
+    public Response getUsuariosExcluir(Usuario usuario) {
+    	UsuarioDAO dao = new UsuarioDAO();
+    	dao.excluir(usuario);
+    	
+    	Response response = Response.ok().entity(true).build();
+    	return response;  
+    	
+    }
 //    
 //    @PUT
 //    @Produces(MediaType.APPLICATION_JSON)

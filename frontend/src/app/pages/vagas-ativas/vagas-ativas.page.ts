@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, ToastController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { Vagas } from 'src/app/interfaces/vagas';
-import { VagasService } from 'src/app/services/vagas.service';
+//import { VagasService } from 'src/app/services/vagas.service';
 
 @Component({
   selector: 'app-vagas-ativas',
@@ -13,13 +13,14 @@ export class VagasAtivasPage implements OnInit {
 
   public vagas = new Array<Vagas>();
   private vagasSubscription: Subscription;
+  alertCtrl: any;
   
-  constructor(private vagasService: VagasService,private toastCtrl: ToastController,
-    private alertCtrl:AlertController) {
-    this.vagasSubscription = this.vagasService.getVagas().subscribe(data => {
-      this.vagas = data;
-    });
-   }
+  //constructor(private vagasService: VagasService,private toastCtrl: ToastController,
+  //  private alertCtrl:AlertController) {
+  //  this.vagasSubscription = this.vagasService.getVagas().subscribe(data => {
+  //    this.vagas = data;
+  //  });
+  // }
 
   ngOnInit() { }
 
@@ -30,7 +31,7 @@ export class VagasAtivasPage implements OnInit {
   async deleteVaga(id: string) {
     
     try {
-      this.vagasService.deleteVaga(id);
+     // this.vagasService.deleteVaga(id);
 
     } catch (error) {
       this.presentToast('Erro ao tentar deletar');
@@ -38,8 +39,8 @@ export class VagasAtivasPage implements OnInit {
   }
 
   async presentToast(message: string) {
-    const toast = await this.toastCtrl.create({ message, duration: 2000 });
-    toast.present();
+    //const toast = await this.toastCtrl.create({ message, duration: 2000 });
+    //toast.present();
   }
 
   async ShowEditar(){

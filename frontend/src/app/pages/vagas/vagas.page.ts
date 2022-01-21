@@ -3,7 +3,7 @@ import { LoadingController, NavController, ToastController } from '@ionic/angula
 import { Vagas } from 'src/app/interfaces/vagas';
 import { AuthService } from 'src/app/services/auth.service';
 import { Subscription } from 'rxjs';
-import { VagasService } from 'src/app/services/vagas.service';
+//import { VagasService } from 'src/app/services/vagas.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -12,15 +12,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./vagas.page.scss'],
 })
 export class VagasPage implements OnInit {
-  public vaga: Vagas = {
-    id: '',
-    vaga: '',
-    estado: '',
-    salario: '',
-    jornada: '',
-    criacao: 0,
-    userId: ''
-  };
+  
   private loading: any;
   private vagasSubscription: Subscription;
   private vagaId: string = null;
@@ -30,12 +22,12 @@ export class VagasPage implements OnInit {
               private toastCtrl: ToastController,
               private authService: AuthService,
               private activatedRoute: ActivatedRoute,
-              private vagaService: VagasService,
+             // private vagaService: VagasService,
               
   ) { 
     this.vagaId = this.activatedRoute.snapshot.params['id'];
 
-    if (this.vagaId) this.loadVaga();
+   // if (this.vagaId) this.loadVaga();
   }
 
   ngOnInit() {
@@ -44,20 +36,20 @@ export class VagasPage implements OnInit {
     this.navCtrl.navigateBack("telainicial")
   }
 
-  loadVaga() {
-    this.vagasSubscription = this.vagaService.getVaga(this.vagaId).subscribe(data => {
-      this.vaga = data;
-    })
-  }
+ // loadVaga() {
+ //   this.vagasSubscription = this.vagaService.getVaga(this.vagaId).subscribe(data => {
+  //    this.vaga = data;
+  //  })
+ // }
 
   async saveVaga() {
     await this.presentLoading();
 
-    this.vaga.userId = (await this.authService.getAuth().currentUser).uid;
+   // this.vaga.userId = (await this.authService.getAuth().currentUser).uid;
 
     if (this.vagaId) {
       try {
-        await this.vagaService.updateVaga(this.vagaId, this.vaga);
+       // await this.vagaService.updateVaga(this.vagaId, this.vaga);
         await this.loading.dismiss();
 
         this.navCtrl.navigateBack('telainicial');
@@ -67,10 +59,10 @@ export class VagasPage implements OnInit {
       }
 
     } else {
-      this.vaga.criacao = new Date().getTime();
+     // this.vaga.criacao = new Date().getTime();
 
       try {
-        await this.vagaService.addVaga(this.vaga);
+      //  await this.vagaService.addVaga(this.vaga);
         await this.loading.dismiss();
 
         this.navCtrl.navigateBack('telainicial');
