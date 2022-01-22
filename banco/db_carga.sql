@@ -7276,14 +7276,14 @@ INSERT INTO assinatura_do_cliente( id_usuario, id_plano) VALUES (21,3);
 
 
 
-INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('2563 2541 8569 8547','05/25','DANILO N TEC','423','Debito','Santander');
-INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('3698 8741 8523 7456','01/22','BAZAR J JUNIOR','461','Credito','Itau');
-INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('7531 2551 8699 8847','08/25','LEONARDO S','589','Debito','Bradesco');
-INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('1507 8242 3247 0484','08/27','MARIA E ALBERTO DE JESUS','423','Debito','Itaú');
-INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('9364 9725 6247 8447','07/22','SARA S','461','Credito','Inter');
-INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('7531 2551 8699 8847','12/25','MARIA C PAIVA','589','Credito','Santander');
-INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('5371 5521 6989 8487','11/24','JOAO V SOUZA LIMA','289','Debito','Bradesco');
-INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('3175 5125 9986 7124','07/28','CRISTOFER R NASCIMENTO','123','Debito','Banco do Brasil');
+INSERT INTO cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('2563 2541 8569 8547','05/25','DANILO N TEC','423','Debito','Santander');
+INSERT INTO cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('3698 8741 8523 7456','01/22','BAZAR J JUNIOR','461','Credito','Itau');
+INSERT INTO cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('7531 2551 8699 8847','08/25','LEONARDO S','589','Debito','Bradesco');
+INSERT INTO cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('1507 8242 3247 0484','08/27','MARIA E ALBERTO DE JESUS','423','Debito','Itaú');
+INSERT INTO cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('9364 9725 6247 8447','07/22','SARA S','461','Credito','Inter');
+INSERT INTO cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('7531 2551 8699 8847','12/25','MARIA C PAIVA','589','Credito','Santander');
+INSERT INTO cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('5371 5521 6989 8487','11/24','JOAO V SOUZA LIMA','289','Debito','Bradesco');
+INSERT INTO cartao(numero, data_validade, nome_pessoa, cvv, tipo, banco) VALUES('3175 5125 9986 7124','07/28','CRISTOFER R NASCIMENTO','123','Debito','Banco do Brasil');
 
 
 INSERT INTO pix(nome_beneficiario, chave_pix) VALUES('Vagasbundo', '2432015');
