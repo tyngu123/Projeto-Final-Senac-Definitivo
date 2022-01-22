@@ -12,7 +12,9 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import projeto.senac.dao.EnderecoDAO;
 import projeto.senac.dao.UsuarioDAO;
+import projeto.senac.modelo.Endereco;
 import projeto.senac.modelo.Usuario;
 
 @Path("appTutorial")
@@ -29,17 +31,21 @@ public class UsuarioResource {
     	return response;
     }
 //    
-//    @POST
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("cadastrar")
-//    public Response getUsuariosCadastro(Usuario usuario) {
-//    	UsuarioDAO dao = new UsuarioDAO();
-//    	dao.cadastrar(usuario);
-//    	
-//    	Response response = Response.ok().entity(true).build();
-//    	return response;  
-//    	
-//    }
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("cadastrar")
+    public Response getUsuariosCadastro(Usuario usuario) {
+    	UsuarioDAO dao = new UsuarioDAO();
+    	EnderecoDAO dao2 = new EnderecoDAO();
+    	Endereco endereco = new Endereco();
+    	dao2.cadastrar(endereco);
+    	dao.cadastrar(usuario);
+    	
+    	
+    	Response response = Response.ok().entity(true).build();
+    	return response;  
+    	
+    }
 //    
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)

@@ -100,6 +100,8 @@ public class Vaga {
 	public void setRequisitos(String requisitos) {
 		this.requisitos = requisitos;
 	}
+
+	
 	
 	
 	
