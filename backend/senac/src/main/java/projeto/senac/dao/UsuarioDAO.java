@@ -49,7 +49,7 @@ public class UsuarioDAO {
 		
 		StringBuilder sql = new StringBuilder();
 		
-		sql.append("INSERT INTO usuario(nome_completo, apelido, nascimento, documento, id_documento, id_endereco, email, senha, id_tipo) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+		sql.append("INSERT INTO usuario(nome_completo, apelido, nascimento, documento, id_documento, email, senha, id_tipo) VALUES( ? ,?, ?, ?, ?, ?, ?, ?);");
 		
 		PreparedStatement ps; // 
 		
@@ -66,10 +66,10 @@ public class UsuarioDAO {
 			ps.setDate(3, new java.sql.Date(usuario.getNascimento().getTime()));	
 			ps.setString(4, usuario.getDocumento());
 			ps.setInt(5, usuario.getTipoDocumento().getId_documento());
-			ps.setInt(6, usuario.getEndereco().getId_endereco());
-			ps.setString(7, usuario.getEmail());
-			ps.setString(8, usuario.getSenha());
-			ps.setInt(9, usuario.getTipoUsuario().getId_tipo());
+			//ps.setInt(6, usuario.getEndereco().getId_endereco());
+			ps.setString(6, usuario.getEmail());
+			ps.setString(7, usuario.getSenha());
+			ps.setInt(8, usuario.getTipoUsuario().getId_tipo());
 			
 			
 			ps.execute();

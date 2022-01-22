@@ -6,8 +6,9 @@ public class Venda {
 
 	private int id_venda;
 	private Date data_venda;
-	private AssinaturaCliente assinaturaCliente;
+	private PlanoCliente planoCliente;
 	private double valor;
+	private Usuario usuario;
 	private FormaPagamento formaPagamento;
 	
 	public Venda(int id_venda, Date data_venda, double valor) {
@@ -33,12 +34,12 @@ public class Venda {
 		this.data_venda = data_venda;
 	}
 
-	public AssinaturaCliente getAssinaturaCliente() {
-		return assinaturaCliente;
+	public PlanoCliente getPlanoCliente() {
+		return planoCliente;
 	}
 
-	public void setAssinaturaCliente(AssinaturaCliente assinaturaCliente) {
-		this.assinaturaCliente = assinaturaCliente;
+	public void setAssinaturaCliente(PlanoCliente planoCliente) {
+		this.planoCliente = planoCliente;
 	}
 
 	public double getValor() {
@@ -55,6 +56,14 @@ public class Venda {
 
 	public void setFormaPagamento(FormaPagamento formaPagamento) {
 		this.formaPagamento = formaPagamento;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 	
