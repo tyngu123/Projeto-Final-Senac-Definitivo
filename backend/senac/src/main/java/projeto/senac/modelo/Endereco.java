@@ -1,6 +1,6 @@
 package projeto.senac.modelo;
 
-public class Endereco {
+public class Endereco extends Logradouro{
 	
 	private int id_endereco;
 	private Logradouro logradouro;

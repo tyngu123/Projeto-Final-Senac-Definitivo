@@ -17,7 +17,12 @@ public class VagaDAO {
 		Connection cnx = Dao.getConexao();
 		
 		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT * FROM vagas ORDER BY id_vagas DESC");
+		sql.append("select * from vagas v\r\n"
+				+ "join usuario u\r\n"
+				+ "on u.id_usuario = v.id_vagas\r\n"
+				+ "join tipo_usuario t\r\n"
+				+ "on u.id_tipo = t.id_tipo\r\n"
+				+ "ORDER BY id_vagas DESC;");
 		
 		PreparedStatement ps; // Statement recebe os comandos do sql e recebe informações 
 		
@@ -32,15 +37,21 @@ public class VagaDAO {
 			while(rs.next()) {
 				v = new Vaga();
 				
-				//v.getUsuario().setId_usuario(rs.getInt("id_usuario"));
+				//Vagas
 				v.setId_vagas(rs.getInt("id_vagas"));
 				v.setTitulo(rs.getString("titulo"));
 				v.setDescricao(rs.getString("descricao"));
 				v.setSalario(rs.getDouble("salario"));
 				v.setBeneficio(rs.getString("beneficio"));
 				v.setCarga_horaria(rs.getString("carga_horaria"));
-				v.setEstado(rs.getString("estado"));
+				v.setEstadoNome(rs.getString("estado"));
 				v.setRequisitos(rs.getString("requisitos"));
+				
+				//Usuario/Empresa que postou a vaga
+				v.setId_usuario(rs.getInt("u.id_usuario"));
+				v.setNome_completo(rs.getString("u.nome_completo"));
+				v.setId_tipo(rs.getInt("t.id_tipo"));
+				v.setDescricao_tipo(rs.getString("t.descricao"));
 				
 				lista.add(v);
 			}
@@ -77,7 +88,7 @@ public class VagaDAO {
 			ps.setDouble(4, vaga.getSalario());
 			ps.setString(5, vaga.getBeneficio());
 			ps.setString(6, vaga.getCarga_horaria());
-			ps.setString(7, vaga.getEstado());
+			ps.setString(7, vaga.getEstadoNome());
 			ps.setString(8, vaga.getRequisitos());
 			
 			
@@ -151,14 +162,14 @@ public class VagaDAO {
 			while(rs.next()) {
 				v = new Vaga();
 
-				//v.getUsuario().setId_usuario(rs.getInt("id_usuario"));
+				//Vagas
 				v.setId_vagas(rs.getInt("id_vagas"));
 				v.setTitulo(rs.getString("titulo"));
 				v.setDescricao(rs.getString("descricao"));
 				v.setSalario(rs.getDouble("salario"));
 				v.setBeneficio(rs.getString("beneficio"));
 				v.setCarga_horaria(rs.getString("carga_horaria"));
-				v.setEstado(rs.getString("estado"));
+				v.setEstadoNome(rs.getString("estado"));
 				v.setRequisitos(rs.getString("requisitos"));
 
 				lista.add(v);

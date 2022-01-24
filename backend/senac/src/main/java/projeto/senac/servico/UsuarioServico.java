@@ -2,14 +2,19 @@ package projeto.senac.servico;
 import java.util.List;
 
 import projeto.senac.dao.EnderecoDAO;
+import projeto.senac.dao.TipoUsuarioDAO;
 import projeto.senac.dao.UsuarioDAO;
 import projeto.senac.modelo.Endereco;
+import projeto.senac.modelo.TipoUsuario;
 import projeto.senac.modelo.Usuario;
 
 public class UsuarioServico {
 	public List<Usuario> listarUsuarios(){
     	UsuarioDAO dao = new UsuarioDAO();
+    	//TipoUsuarioDAO dao2 = new TipoUsuarioDAO();
+    	
     	List<Usuario> lista = dao.listar();
+    	//dao2.listar();
     	
     	return lista;
 	}

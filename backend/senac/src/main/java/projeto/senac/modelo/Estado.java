@@ -1,16 +1,20 @@
 package projeto.senac.modelo;
 
-public class Estado {
+public class Estado  {
 
 	private int id_estado;
-	private String descricao;
+	private String descricao_estado;
 	private String uf; // mudei para varchar no banco de dados
 	
-	public Estado(int id_estado, String descricao, String uf) {
+	public Estado(int id_estado, String descricao_estado, String uf) {
 		super();
 		this.id_estado = id_estado;
-		this.descricao = descricao;
+		this.descricao_estado = descricao_estado;
 		this.uf = uf;
+	}
+
+	public Estado() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getId_estado() {
@@ -21,12 +25,12 @@ public class Estado {
 		this.id_estado = id_estado;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getDescricao_estado() {
+		return descricao_estado;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setDescricao_estado(String descricao_estado) {
+		this.descricao_estado = descricao_estado;
 	}
 
 	public String getUf() {

@@ -1,6 +1,6 @@
 package projeto.senac.modelo;
 
-public class Vaga {
+public class Vaga extends Usuario{
 
 	private int id_vagas;
 	private Usuario usuario;
@@ -85,11 +85,11 @@ public class Vaga {
 		this.carga_horaria = carga_horaria;
 	}
 
-	public String getEstado() {
+	public String getEstadoNome() {
 		return estado;
 	}
 
-	public void setEstado(String estado) {
+	public void setEstadoNome(String estado) {
 		this.estado = estado;
 	}
 

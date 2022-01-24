@@ -11,8 +11,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import projeto.senac.modelo.TipoUsuario;
 import projeto.senac.modelo.Usuario;
 import projeto.senac.modelo.Vaga;
+import projeto.senac.servico.TipoUsuarioServico;
 import projeto.senac.servico.UsuarioServico;
 import projeto.senac.servico.VagaServico;
 /**
@@ -50,6 +53,18 @@ public class MyResource {
     public Response getVaga() {
     	VagaServico servico = new VagaServico();
     	List<Vaga> lista = servico.listarVagas();
+    	
+    	Response response = Response.ok().entity(lista).build();
+    	
+    	return response;
+    }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("listarTipo")
+    public Response getTipoUsuarios() {
+    	TipoUsuarioServico servico = new TipoUsuarioServico();
+    	List<TipoUsuario> lista = servico.listarTipoUsuarios();
     	
     	Response response = Response.ok().entity(lista).build();
     	

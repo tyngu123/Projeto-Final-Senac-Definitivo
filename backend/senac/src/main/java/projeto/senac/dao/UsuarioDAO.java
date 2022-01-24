@@ -5,19 +5,27 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
+import projeto.senac.modelo.TipoUsuario;
 import projeto.senac.modelo.Usuario;
 public class UsuarioDAO {
 	public List<Usuario> listar(){
+		
+		
+		
 		Connection cnx = Dao.getConexao();
 		
 		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT * FROM usuario");
+		sql.append("select * from usuario u inner join tipo_usuario tu on tu.id_tipo = u.id_tipo inner join tipo_documento td on td.id_documento = u.id_documento inner join endereco e on e.id_endereco = u.id_endereco inner join logradouro l on l.id_logradouro = e.id_logradouro inner join bairro b on e.id_bairro = b.id_bairro inner join municipio m on e.id_municipio = m.id_municipio inner join estado es on m.id_estado = es.id_estado;");
 		
 		PreparedStatement ps; // Statement recebe os comandos do sql e recebe informações 
 		
 		List<Usuario> lista = new ArrayList<Usuario>();
 		Usuario u;
+		TipoUsuario t;
+		
 		
 		try {
 			ps = cnx.prepareStatement(sql.toString());
@@ -27,13 +35,61 @@ public class UsuarioDAO {
 			while(rs.next()) {
 				u = new Usuario();
 				
-				u.setId_usuario(rs.getInt("id_usuario"));
-				u.setEmail(rs.getString("email"));
-				u.setNome_completo(rs.getString("nome_completo"));
+				t = new TipoUsuario();
 				
+		
+				//Usuario
+				u.setId_usuario(rs.getInt("id_usuario"));
+				u.setNome_completo(rs.getString("nome_completo"));
+				u.setApelido(rs.getString("apelido"));
+				u.setNascimento(rs.getDate("nascimento"));
+				u.setDocumento(rs.getString("documento"));
+				u.setEmail(rs.getString("email"));
 				u.setSenha(rs.getString("senha"));
 				
+				//Tipo Usuário
+				u.setId_tipo(rs.getInt("id_tipo"));
+				u.setDescricao_tipo(rs.getString("descricao"));
+				
+
+				//Documento
+				u.setId_documento(rs.getInt("td.id_documento"));
+				u.setDescricao_documento(rs.getString("td.descricao"));
+				
+				//Endereço
+				u.setId_endereco(rs.getInt("e.id_endereco"));
+				u.setId_logradouro(rs.getInt("e.id_logradouro"));
+				u.setNome_rua(rs.getString("e.nome_rua"));
+				u.setId_bairro(rs.getInt("e.id_bairro"));
+				u.setId_municipio(rs.getInt("e.id_municipio"));
+				u.setCep(rs.getString("CEP"));
+				u.setNumero(rs.getInt("numero"));
+				u.setComplemento(rs.getString("complemento"));
+				
+				//Logradouro
+				u.setDescricaoLog(rs.getString("l.descricao"));
+				
+				//Bairro
+				u.setDescricao_bairro(rs.getString("b.descricao"));
+				
+				//Municipio
+				u.setDescricao_municipio(rs.getString("m.descricao"));
+				
+				//Estado
+				u.setId_estado(rs.getInt("es.id_estado"));
+				u.setDescricao_estado(rs.getString("es.descricao"));
+				u.setUf(rs.getString("es.UF"));
+				;
+				
+				
+				
+				
+				
+				
 				lista.add(u);
+				
+				
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -69,7 +125,7 @@ public class UsuarioDAO {
 			//ps.setInt(6, usuario.getEndereco().getId_endereco());
 			ps.setString(6, usuario.getEmail());
 			ps.setString(7, usuario.getSenha());
-			ps.setInt(8, usuario.getTipoUsuario().getId_tipo());
+		//	ps.setInt(8, usuario.getTipoUsuario().getId_tipo());
 			
 			
 			ps.execute();
@@ -162,7 +218,7 @@ public class UsuarioDAO {
 		
 		StringBuilder sql = new StringBuilder();
 		
-		sql.append("SELECT * FROM usuario WHERE email = ? AND senha = ?");
+		sql.append("select * from usuario u inner join tipo_usuario tu on tu.id_tipo = u.id_tipo inner join tipo_documento td on td.id_documento = u.id_documento inner join endereco e on e.id_endereco = u.id_endereco inner join logradouro l on l.id_logradouro = e.id_logradouro inner join bairro b on e.id_bairro = b.id_bairro inner join municipio m on e.id_municipio = m.id_municipio inner join estado es on m.id_estado = es.id_estado WHERE email = ? AND senha = ?");
 		
 		PreparedStatement ps; // 
 		
@@ -185,10 +241,47 @@ public class UsuarioDAO {
 			
 			while(rs.next()) {
 				
+				//Usuario
 				u.setId_usuario(rs.getInt("id_usuario"));
-				u.setEmail(rs.getString("email"));
 				u.setNome_completo(rs.getString("nome_completo"));
 				u.setApelido(rs.getString("apelido"));
+				u.setNascimento(rs.getDate("nascimento"));
+				u.setDocumento(rs.getString("documento"));
+				u.setEmail(rs.getString("email"));
+				u.setSenha(rs.getString("senha"));
+				
+				//Tipo Usuário
+				u.setId_tipo(rs.getInt("id_tipo"));
+				u.setDescricao_tipo(rs.getString("descricao"));
+				
+
+				//Documento
+				u.setId_documento(rs.getInt("td.id_documento"));
+				u.setDescricao_documento(rs.getString("td.descricao"));
+				
+				//Endereço
+				u.setId_endereco(rs.getInt("e.id_endereco"));
+				u.setId_logradouro(rs.getInt("e.id_logradouro"));
+				u.setNome_rua(rs.getString("e.nome_rua"));
+				u.setId_bairro(rs.getInt("e.id_bairro"));
+				u.setId_municipio(rs.getInt("e.id_municipio"));
+				u.setCep(rs.getString("CEP"));
+				u.setNumero(rs.getInt("numero"));
+				u.setComplemento(rs.getString("complemento"));
+				
+				//Logradouro
+				u.setDescricaoLog(rs.getString("l.descricao"));
+				
+				//Bairro
+				u.setDescricao_bairro(rs.getString("b.descricao"));
+				
+				//Municipio
+				u.setDescricao_municipio(rs.getString("m.descricao"));
+				
+				//Estado
+				u.setId_estado(rs.getInt("es.id_estado"));
+				u.setDescricao_estado(rs.getString("es.descricao"));
+				u.setUf(rs.getString("es.UF"));
 				
 				
 			}

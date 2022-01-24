@@ -1,14 +1,18 @@
 package projeto.senac.modelo;
 
-public class Logradouro {
+public class Logradouro extends Bairro{
 
 	private int id_logradouro;
-	private String descricao;
+	private String descricaoLog;
 	
-	public Logradouro(int id_logradouro, String descricao) {
+	public Logradouro(int id_logradouro, String descricaoLog) {
 		super();
 		this.id_logradouro = id_logradouro;
-		this.descricao = descricao;
+		this.descricaoLog = descricaoLog;
+	}
+
+	public Logradouro() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getId_logradouro() {
@@ -19,12 +23,12 @@ public class Logradouro {
 		this.id_logradouro = id_logradouro;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getDescricaoLog() {
+		return descricaoLog;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setDescricaoLog(String descricaoLog) {
+		this.descricaoLog = descricaoLog;
 	}
 	
 	

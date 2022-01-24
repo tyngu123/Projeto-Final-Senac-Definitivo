@@ -1,6 +1,6 @@
 package projeto.senac.modelo;
 
-public class PlanoCliente {
+public class PlanoCliente extends Usuario {
 	
 	private int id_plano;
 	private String planos;

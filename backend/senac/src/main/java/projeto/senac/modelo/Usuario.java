@@ -2,7 +2,7 @@ package projeto.senac.modelo;
 
 import java.util.Date;
 
-public class Usuario {
+public class Usuario extends TipoDocumento{
 	private int id_usuario;
 	private String nome_completo;
 	private String apelido;
@@ -25,6 +25,7 @@ public class Usuario {
 		this.documento = documento;
 		this.email = email;
 		this.senha = senha;
+		
 	}
 
 	public Usuario() {
@@ -110,6 +111,16 @@ public class Usuario {
 	public void setTipoUsuario(TipoUsuario tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
+
+	
+
+//	public String getDescricao() {
+//		return descricao;
+//	}
+//
+//	public void setDescricao(String descricao) {
+//		this.descricao = descricao;
+//	}
 	
 	
 
