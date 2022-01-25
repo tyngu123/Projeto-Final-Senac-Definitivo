@@ -53,7 +53,7 @@ public class VagaDAO {
 				usuario.setId_usuario(rs.getInt("id_usuario"));
 				usuario.setNome_completo(rs.getString("nome_completo"));
 				usuario.setApelido(rs.getString("apelido"));
-				usuario.setNascimento(rs.getDate("nascimento"));
+				//usuario.setNascimento(rs.getDate("nascimento"));
 				usuario.setDocumento(rs.getString("documento"));
 				usuario.setEmail(rs.getString("email"));
 				usuario.setSenha(rs.getString("senha"));
@@ -93,7 +93,7 @@ public class VagaDAO {
 			
 			
 			
-			//ps.setInt(1, vaga.getUsuario().getId_usuario());
+			ps.setInt(1, vaga.getUsuario().getId_usuario());
 			ps.setString(2, vaga.getTitulo());	
 			ps.setString(3, vaga.getDescricao());
 			ps.setDouble(4, vaga.getSalario());

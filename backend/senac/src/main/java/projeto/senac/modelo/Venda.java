@@ -8,7 +8,7 @@ public class Venda {
 	private Date data_venda;
 	private PlanoCliente planoCliente;
 	private double valor;
-	private Usuario usuario;
+//	private Usuario usuario;
 	private FormaPagamento formaPagamento;
 	
 	public Venda(int id_venda, Date data_venda, double valor) {
@@ -62,13 +62,13 @@ public class Venda {
 		this.formaPagamento = formaPagamento;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+//	public Usuario getUsuario() {
+//		return usuario;
+//	}
+//
+//	public void setUsuario(Usuario usuario) {
+//		this.usuario = usuario;
+//	}
 	
 	
 	

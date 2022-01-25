@@ -24,12 +24,10 @@ public class VendaDAO {
 		StringBuilder sql = new StringBuilder();
 		sql.append("select * from venda v\r\n"
 				+ "inner join plano_cliente p \r\n"
-				+ "on v.id_plano = p.id_plano\r\n"
-				+ "inner join usuario u\r\n"
-				+ "on v.id_usuario = u.id_usuario\r\n"
+				+ "on v.id_plano = p.id_plano\r\n" 
 				+ "inner join forma_de_pagamento f\r\n"
 				+ "on v.id_forma_pagamento = f.id_forma_pagamento\r\n"
-				+ "inner join cartao c\r\n"
+				+ "inner join Cartao c\r\n"
 				+ "on f.id_cartao = c.id_cartao;");
 		
 		PreparedStatement ps; // Statement recebe os comandos do sql e recebe informações 
@@ -56,14 +54,7 @@ public class VendaDAO {
 				planoCliente.setPlanos_descricao(rs.getString("planos_descricao"));
 				planoCliente.setPlanos_preco(rs.getDouble("planos_preco"));
 				
-				Usuario usuario = new Usuario();
-				usuario.setId_usuario(rs.getInt("id_usuario"));
-				usuario.setNome_completo(rs.getString("nome_completo"));
-				usuario.setApelido(rs.getString("apelido"));
-				usuario.setNascimento(rs.getDate("nascimento"));
-				usuario.setDocumento(rs.getString("documento"));
-				usuario.setEmail(rs.getString("email"));
-				usuario.setSenha(rs.getString("senha"));
+			
 				
 				FormaPagamento formaPagamento = new FormaPagamento();
 				formaPagamento.setId_forma_pagamento(rs.getInt("id_forma_pagamento"));
@@ -81,7 +72,7 @@ public class VendaDAO {
 				formaPagamento.setCartao(cartao);
 				
 				v.setPlanoCliente(planoCliente);
-				v.setUsuario(usuario);
+//				v.setUsuario(usuario);
 				v.setFormaPagamento(formaPagamento);
 				lista.add(v);
 				
@@ -94,5 +85,44 @@ public class VendaDAO {
 			return lista;
 		}
 		
+	}
+	
+	public boolean cadastrar(Venda venda) {
+		Connection cnx = Dao.getConexao();
+		
+		StringBuilder sql = new StringBuilder();
+		
+		sql.append("INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, banco) VALUES( ?, ?, ?, ?, ?);");
+		
+		PreparedStatement ps; // 
+		
+		boolean retorno = true;
+		
+		
+		try {
+			ps = cnx.prepareStatement(sql.toString());
+			
+			
+			
+			
+//			ps.setString(1, cartao.getNumero());
+//			ps.setString(2, cartao.getData_validade());
+//			ps.setString(3, cartao.getNome_pessoa());
+//			ps.setInt(4, cartao.getCvv());
+//			ps.setString(5, cartao.getBanco());
+//		
+			
+			
+			ps.execute();
+			ps.close();
+			cnx.close();
+				
+				
+			}
+		 catch (SQLException e) {
+			e.printStackTrace();
+			retorno = false;
+		} 
+		return retorno;
 	}
 }
