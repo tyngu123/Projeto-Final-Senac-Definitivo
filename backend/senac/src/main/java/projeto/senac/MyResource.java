@@ -1,12 +1,10 @@
 package projeto.senac;
 import java.util.List;
-import javax.ws.rs.Consumes;
+
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -15,9 +13,11 @@ import javax.ws.rs.core.Response;
 import projeto.senac.modelo.TipoUsuario;
 import projeto.senac.modelo.Usuario;
 import projeto.senac.modelo.Vaga;
+import projeto.senac.modelo.Venda;
 import projeto.senac.servico.TipoUsuarioServico;
 import projeto.senac.servico.UsuarioServico;
 import projeto.senac.servico.VagaServico;
+import projeto.senac.servico.VendaServico;
 /**
  * Root resource (exposed at "myresource" path)
  */
@@ -35,6 +35,7 @@ public class MyResource {
         return "Got it!";
     }
     
+    //Serviços de listagem
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("listar")
@@ -42,9 +43,15 @@ public class MyResource {
     	UsuarioServico servico = new UsuarioServico();
     	List<Usuario> lista = servico.listarUsuarios();
     	
-    	Response response = Response.ok().entity(lista).build();
-    	
+    	Response response = Response.status(200)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.entity(lista).build();
+
     	return response;
+    	
     }
     
     @GET
@@ -54,7 +61,12 @@ public class MyResource {
     	VagaServico servico = new VagaServico();
     	List<Vaga> lista = servico.listarVagas();
     	
-    	Response response = Response.ok().entity(lista).build();
+    	Response response = Response.status(200)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.entity(lista).build();
     	
     	return response;
     }
@@ -66,11 +78,34 @@ public class MyResource {
     	TipoUsuarioServico servico = new TipoUsuarioServico();
     	List<TipoUsuario> lista = servico.listarTipoUsuarios();
     	
-    	Response response = Response.ok().entity(lista).build();
+    	Response response = Response.status(200)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.entity(lista).build();
     	
     	return response;
     }
     
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("listarVendas")
+    public Response getVendas() {
+    	VendaServico servico = new VendaServico();
+    	List<Venda> lista = servico.listarVendas();
+    	
+    	Response response = Response.status(200)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.entity(lista).build();
+    	
+    	return response;
+    }
+    
+    //Serviços de inclusão  // Não funcionando
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Path("cadastrar")
@@ -78,11 +113,17 @@ public class MyResource {
     	UsuarioServico servico = new UsuarioServico();
     	servico.cadastrarUsuarios(usuario);
     	
-    	Response response = Response.ok().entity(true).build();
+    	Response response = Response.status(200)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.entity(true).build();
     	return response;
     	
     }
-//    
+
+    //Serviços de exclusão
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     @Path("excluir")
@@ -90,7 +131,30 @@ public class MyResource {
     	UsuarioServico servico = new UsuarioServico();
     	servico.excluirUsuarios(usuario);
     	
-    	Response response = Response.ok().entity(true).build();
+    	Response response = Response.status(200)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.entity(true).build();
+    	return response;  
+    	
+    }
+    
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("excluirVaga")
+    public Response deleteVaga(Vaga vaga) {
+    	VagaServico servico = new VagaServico();
+    	servico.excluirVaga(vaga);
+    	
+    	Response response = Response.status(200)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.entity(true).build();
+    	
     	return response;  
     	
     }
@@ -114,50 +178,112 @@ public class MyResource {
     	UsuarioServico servico = new UsuarioServico();
     	Usuario usuario = servico.logarUsuario(email,senha);
     	if(usuario.getId_usuario() != 0) {
-        	Response response = Response.ok().entity(usuario).build();
-        	return response;
+    		Response response = Response.status(200)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.header("Access-Control-Allow-Credentials", "true")
+    				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+    				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+    				.entity(usuario).build();
+    		return response;
         	} else {
         	Response response = Response.ok().entity("Usuário ou senha incorreto.").build();
             return response;
         	}
     }
-//
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//   // @Consumes(MediaType.APPLICATION_JSON)
-//    @Path("buscarId")
-//    public Response getUsuariosId(@QueryParam("id")int id) {
-//    	UsuarioServico servico = new UsuarioServico();
-//    	Usuario usuario= servico.buscarUsuarioId(id);
-//    	if(usuario.getId() != 0) {
-//        	Response response = Response.ok().entity(usuario).build();
-//        	return response;
-//        	} else {
-//        	Response response = Response.ok().entity("Não foi possível encontrar esse ID").build();
-//            return response;
-//        	}
-//
-//        }
-//
-//
-//        @GET
-//        @Produces(MediaType.APPLICATION_JSON)
-//        @Path("buscarNome")
-//        public Response getUsuariosNome(@QueryParam("nome")String nome) {
-//        	UsuarioServico servico = new UsuarioServico();
-//        	List<Usuario> lista = servico.buscarUsuarioNome(nome);
-//
-//
-//        	if(!lista.isEmpty()) {
-//        		Response response = Response.ok().entity(lista).build();
-//
-//        		return response;
-//        	} else {
-//        		Response response = Response.ok().entity("Nome não encontrado").build();
-//
-//            	return response;
-//        	}
-//        }
+    
+    // Serviços de Busca
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("buscarId")
+    public Response getUsuariosId(@QueryParam("id_usuario")int id) {
+    	UsuarioServico servico = new UsuarioServico();
+    	Usuario usuario= servico.buscarUsuarioId(id);
+    	if(usuario.getId_usuario() != 0) {
+    		Response response = Response.status(200)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.header("Access-Control-Allow-Credentials", "true")
+    				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+    				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+    				.entity(usuario).build();
+        	return response;
+        	} else {
+        	Response response = Response.ok().entity("Não foi possível encontrar esse usuário").build();
+            return response;
+        	}
+
+        }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("buscarVagaId")
+    public Response getVagaId(@QueryParam("id_vagas")int id) {
+    	VagaServico servico = new VagaServico();
+    	Vaga vaga = servico.buscarVagaId(id);
+    	if(vaga.getId_vagas() != 0) {
+    		Response response = Response.status(200)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.header("Access-Control-Allow-Credentials", "true")
+    				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+    				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+    				.entity(vaga).build();
+        	return response;
+        	} else {
+        	Response response = Response.ok().entity("Não foi possível encontrar essa vaga").build();
+            return response;
+        	}
+
+        }
+    
+	  @GET
+	  @Produces(MediaType.APPLICATION_JSON)
+	  @Path("buscarVagas")
+	  public Response getVagasNome(@QueryParam("titulo")String vaga) {
+	  	VagaServico servico = new VagaServico();
+	  	List<Vaga> lista = servico.buscarVagas(vaga);
+	
+	
+	  	if(!lista.isEmpty()) {
+	  		Response response = Response.status(200)
+					.header("Access-Control-Allow-Origin", "*")
+					.header("Access-Control-Allow-Credentials", "true")
+					.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+					.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+					.entity(lista).build();
+	
+	  		return response;
+	  	} else {
+	  		Response response = Response.ok().entity("Vaga não encontrada").build();
+	
+	      	return response;
+	  	}
+  }
+	  
+	  // É necessária que mude o (estado) no banco de dados para chave estrangeira 
+	  @GET
+	  @Produces(MediaType.APPLICATION_JSON)
+	  @Path("buscarVagasEstado")
+	  public Response getVagasEstado(@QueryParam("estado")String estado) {
+	  	VagaServico servico = new VagaServico();
+	  	List<Vaga> lista = servico.buscarVagasEstado(estado);
+	
+	
+	  	if(!lista.isEmpty()) {
+	  		Response response = Response.status(200)
+					.header("Access-Control-Allow-Origin", "*")
+					.header("Access-Control-Allow-Credentials", "true")
+					.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+					.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+					.entity(lista).build();
+	
+	  		return response;
+	  	} else {
+	  		Response response = Response.ok().entity("Não há vagas disponíveis nessa região").build();
+	
+	      	return response;
+	  	}
+  }
+	  
+	  
 
 
     }

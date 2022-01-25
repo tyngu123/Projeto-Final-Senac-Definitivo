@@ -1,6 +1,6 @@
 package projeto.senac.modelo;
 
-public class PlanoCliente extends Usuario {
+public class PlanoCliente {
 	
 	private int id_plano;
 	private String planos;
@@ -13,6 +13,10 @@ public class PlanoCliente extends Usuario {
 		this.planos = planos;
 		this.planos_descricao = planos_descricao;
 		this.planos_preco = planos_preco;
+	}
+
+	public PlanoCliente() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getId_plano() {

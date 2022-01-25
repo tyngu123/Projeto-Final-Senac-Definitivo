@@ -1,14 +1,14 @@
 package projeto.senac.modelo;
 
-public class Logradouro extends Bairro{
+public class Logradouro{
 
 	private int id_logradouro;
-	private String descricaoLog;
+	private String descricao;
 	
-	public Logradouro(int id_logradouro, String descricaoLog) {
+	public Logradouro(int id_logradouro, String descricao) {
 		super();
 		this.id_logradouro = id_logradouro;
-		this.descricaoLog = descricaoLog;
+		this.descricao = descricao;
 	}
 
 	public Logradouro() {
@@ -23,12 +23,12 @@ public class Logradouro extends Bairro{
 		this.id_logradouro = id_logradouro;
 	}
 
-	public String getDescricaoLog() {
-		return descricaoLog;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDescricaoLog(String descricaoLog) {
-		this.descricaoLog = descricaoLog;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	
 	

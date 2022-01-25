@@ -1,15 +1,15 @@
 package projeto.senac.modelo;
 
-public class Municipio extends Estado{
+public class Municipio {
 
 	private int id_municipio;
-	private String descricao_municipio;
+	private String descricao;
 	private Estado estado;
 	
-	public Municipio(int id_municipio, String descricao_municipio) {
+	public Municipio(int id_municipio, String descricao) {
 		super();
 		this.id_municipio = id_municipio;
-		this.descricao_municipio = descricao_municipio;
+		this.descricao = descricao;
 	}
 
 	public Municipio() {
@@ -24,12 +24,12 @@ public class Municipio extends Estado{
 		this.id_municipio = id_municipio;
 	}
 
-	public String getDescricao_municipio() {
-		return descricao_municipio;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDescricao_municipio(String descricao_municipio) {
-		this.descricao_municipio = descricao_municipio;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public Estado getEstado() {

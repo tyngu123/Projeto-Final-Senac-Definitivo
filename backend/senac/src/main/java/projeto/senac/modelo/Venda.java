@@ -18,6 +18,10 @@ public class Venda {
 		this.valor = valor;
 	}
 
+	public Venda() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId_venda() {
 		return id_venda;
 	}
@@ -38,7 +42,7 @@ public class Venda {
 		return planoCliente;
 	}
 
-	public void setAssinaturaCliente(PlanoCliente planoCliente) {
+	public void setPlanoCliente(PlanoCliente planoCliente) {
 		this.planoCliente = planoCliente;
 	}
 

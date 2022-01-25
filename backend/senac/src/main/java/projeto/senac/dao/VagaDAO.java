@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import projeto.senac.modelo.TipoUsuario;
 import projeto.senac.modelo.Usuario;
 import projeto.senac.modelo.Vaga;
 
@@ -47,11 +48,21 @@ public class VagaDAO {
 				v.setEstadoNome(rs.getString("estado"));
 				v.setRequisitos(rs.getString("requisitos"));
 				
-				//Usuario/Empresa que postou a vaga
-				v.setId_usuario(rs.getInt("u.id_usuario"));
-				v.setNome_completo(rs.getString("u.nome_completo"));
-				v.setId_tipo(rs.getInt("t.id_tipo"));
-				v.setDescricao_tipo(rs.getString("t.descricao"));
+				//Usuário
+				Usuario usuario = new Usuario();
+				usuario.setId_usuario(rs.getInt("id_usuario"));
+				usuario.setNome_completo(rs.getString("nome_completo"));
+				usuario.setApelido(rs.getString("apelido"));
+				usuario.setNascimento(rs.getDate("nascimento"));
+				usuario.setDocumento(rs.getString("documento"));
+				usuario.setEmail(rs.getString("email"));
+				usuario.setSenha(rs.getString("senha"));
+				TipoUsuario tipoUsuario = new TipoUsuario();
+				tipoUsuario.setId_tipo(rs.getInt("id_tipo"));
+				tipoUsuario.setDescricao(rs.getString("t.descricao"));
+				
+				usuario.setTipoUsuario(tipoUsuario);
+				v.setUsuario(usuario);
 				
 				lista.add(v);
 			}
@@ -105,7 +116,7 @@ public class VagaDAO {
 		return retorno;
 	}
 	
-	//NAO TESTADO
+	
 	public boolean excluir(Vaga vaga) {
 		Connection cnx = Dao.getConexao();
 		
@@ -140,12 +151,18 @@ public class VagaDAO {
 	}
 	
 	
-	// NAO TESTADO
-	public List<Vaga> buscarNome(String vaga){
+
+	public List<Vaga> buscarVagas(String vaga){
 		Connection cnx = Dao.getConexao();
 
 		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT * FROM vagas WHERE titulo = ?");
+		sql.append("select * from vagas v\r\n"
+				+ "join usuario u\r\n"
+				+ "on u.id_usuario = v.id_vagas\r\n"
+				+ "join tipo_usuario t\r\n"
+				+ "on u.id_tipo = t.id_tipo\r\n"
+				+ "WHERE titulo = ?\r\n"
+				+ "ORDER BY id_vagas DESC;");
 
 		PreparedStatement ps; // Statement recebe os comandos do sql e recebe informações 
 
@@ -161,7 +178,7 @@ public class VagaDAO {
 
 			while(rs.next()) {
 				v = new Vaga();
-
+				
 				//Vagas
 				v.setId_vagas(rs.getInt("id_vagas"));
 				v.setTitulo(rs.getString("titulo"));
@@ -171,7 +188,23 @@ public class VagaDAO {
 				v.setCarga_horaria(rs.getString("carga_horaria"));
 				v.setEstadoNome(rs.getString("estado"));
 				v.setRequisitos(rs.getString("requisitos"));
-
+				
+				//Usuário
+				Usuario usuario = new Usuario();
+				usuario.setId_usuario(rs.getInt("id_usuario"));
+				usuario.setNome_completo(rs.getString("nome_completo"));
+				usuario.setApelido(rs.getString("apelido"));
+				usuario.setNascimento(rs.getDate("nascimento"));
+				usuario.setDocumento(rs.getString("documento"));
+				usuario.setEmail(rs.getString("email"));
+				usuario.setSenha(rs.getString("senha"));
+				TipoUsuario tipoUsuario = new TipoUsuario();
+				tipoUsuario.setId_tipo(rs.getInt("id_tipo"));
+				tipoUsuario.setDescricao(rs.getString("t.descricao"));
+				
+				usuario.setTipoUsuario(tipoUsuario);
+				v.setUsuario(usuario);
+				
 				lista.add(v);
 			}
 		} catch (SQLException e) {
@@ -182,4 +215,135 @@ public class VagaDAO {
 		}
 
 	}
+	
+	public Vaga buscarId(int id){
+		Connection cnx = Dao.getConexao();
+
+		StringBuilder sql = new StringBuilder();
+		sql.append("select * from vagas v\r\n"
+				+ "join usuario u\r\n"
+				+ "on u.id_usuario = v.id_vagas\r\n"
+				+ "join tipo_usuario t\r\n"
+				+ "on u.id_tipo = t.id_tipo\r\n"
+				+ "WHERE id_vagas = ?;");
+				
+
+		PreparedStatement ps; // Statement recebe os comandos do sql e recebe informações 
+
+	
+		Vaga v = new Vaga();
+
+		try {
+			ps = cnx.prepareStatement(sql.toString());
+
+			ps.setInt(1, id);
+
+			ResultSet rs = ps.executeQuery();
+
+			while(rs.next()) {
+				v = new Vaga();
+				
+				//Vagas
+				v.setId_vagas(rs.getInt("id_vagas"));
+				v.setTitulo(rs.getString("titulo"));
+				v.setDescricao(rs.getString("descricao"));
+				v.setSalario(rs.getDouble("salario"));
+				v.setBeneficio(rs.getString("beneficio"));
+				v.setCarga_horaria(rs.getString("carga_horaria"));
+				v.setEstadoNome(rs.getString("estado"));
+				v.setRequisitos(rs.getString("requisitos"));
+				
+				//Usuário
+				Usuario usuario = new Usuario();
+				usuario.setId_usuario(rs.getInt("id_usuario"));
+				usuario.setNome_completo(rs.getString("nome_completo"));
+				usuario.setApelido(rs.getString("apelido"));
+				usuario.setNascimento(rs.getDate("nascimento"));
+				usuario.setDocumento(rs.getString("documento"));
+				usuario.setEmail(rs.getString("email"));
+				usuario.setSenha(rs.getString("senha"));
+				TipoUsuario tipoUsuario = new TipoUsuario();
+				tipoUsuario.setId_tipo(rs.getInt("id_tipo"));
+				tipoUsuario.setDescricao(rs.getString("t.descricao"));
+				
+				usuario.setTipoUsuario(tipoUsuario);
+				v.setUsuario(usuario);
+				
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Dao.fecharConexao();
+			
+		}
+		return v;
+
+	}
+	
+	public List<Vaga> buscarVagasEstado(String estado){
+		Connection cnx = Dao.getConexao();
+
+		StringBuilder sql = new StringBuilder();
+		sql.append("select * from vagas v\r\n"
+				+ "join usuario u\r\n"
+				+ "on u.id_usuario = v.id_vagas\r\n"
+				+ "join tipo_usuario t\r\n"
+				+ "on u.id_tipo = t.id_tipo\r\n"
+				+ "WHERE estado = ?\r\n"
+				+ "ORDER BY id_vagas DESC;");
+
+		PreparedStatement ps; // Statement recebe os comandos do sql e recebe informações 
+
+		List<Vaga> lista = new ArrayList<Vaga>();
+		Vaga v;
+
+		try {
+			ps = cnx.prepareStatement(sql.toString());
+
+			ps.setString(1, estado);
+
+			ResultSet rs = ps.executeQuery();
+
+			while(rs.next()) {
+				v = new Vaga();
+				
+				//Vagas
+				v.setId_vagas(rs.getInt("id_vagas"));
+				v.setTitulo(rs.getString("titulo"));
+				v.setDescricao(rs.getString("descricao"));
+				v.setSalario(rs.getDouble("salario"));
+				v.setBeneficio(rs.getString("beneficio"));
+				v.setCarga_horaria(rs.getString("carga_horaria"));
+				v.setEstadoNome(rs.getString("estado"));
+				v.setRequisitos(rs.getString("requisitos"));
+				
+				//Usuário
+				Usuario usuario = new Usuario();
+				usuario.setId_usuario(rs.getInt("id_usuario"));
+				usuario.setNome_completo(rs.getString("nome_completo"));
+				usuario.setApelido(rs.getString("apelido"));
+				usuario.setNascimento(rs.getDate("nascimento"));
+				usuario.setDocumento(rs.getString("documento"));
+				usuario.setEmail(rs.getString("email"));
+				usuario.setSenha(rs.getString("senha"));
+				TipoUsuario tipoUsuario = new TipoUsuario();
+				tipoUsuario.setId_tipo(rs.getInt("id_tipo"));
+				tipoUsuario.setDescricao(rs.getString("t.descricao"));
+				
+				usuario.setTipoUsuario(tipoUsuario);
+				v.setUsuario(usuario);
+				
+				lista.add(v);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Dao.fecharConexao();
+			return lista;
+		}
+
+	}
+	
+	
 }

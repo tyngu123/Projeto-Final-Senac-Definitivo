@@ -11,6 +11,10 @@ public class FormaPagamento {
 		this.id_forma_pagamento = id_forma_pagamento;
 	}
 
+	public FormaPagamento() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId_forma_pagamento() {
 		return id_forma_pagamento;
 	}

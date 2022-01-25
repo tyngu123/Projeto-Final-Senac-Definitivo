@@ -39,7 +39,7 @@ public static List<TipoUsuario> listar(){
 				
 				
 				t.setId_tipo(rs.getInt("id_tipo"));
-				t.setDescricao_tipo(rs.getString("descricao"));
+				t.setDescricao(rs.getString("descricao"));
 				
 				lista.add(t);
 				

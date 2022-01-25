@@ -7,7 +7,7 @@ public class Cartao {
 	private String data_validade;
 	private String nome_pessoa;
 	private int cvv;
-	private enum tipo {Credito, Debito};
+	public enum tipo {Credito, Debito};
 	private String banco;
 	
 	public Cartao(int id_cartao, String numero, String data_validade, String nome_pessoa, int cvv, String banco) {
@@ -18,6 +18,10 @@ public class Cartao {
 		this.nome_pessoa = nome_pessoa;
 		this.cvv = cvv;
 		this.banco = banco;
+	}
+
+	public Cartao() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getId_cartao() {

@@ -1,14 +1,14 @@
 package projeto.senac.modelo;
 
-public class Bairro extends Municipio{
+public class Bairro{
 
 	private int id_bairro;
-	private String descricao_bairro;
+	private String descricao;
 	
-	public Bairro(int id_bairro, String descricao_bairro) {
+	public Bairro(int id_bairro, String descricao) {
 		super();
 		this.id_bairro = id_bairro;
-		this.descricao_bairro = descricao_bairro;
+		this.descricao = descricao;
 	}
 
 	public Bairro() {
@@ -23,11 +23,11 @@ public class Bairro extends Municipio{
 		this.id_bairro = id_bairro;
 	}
 
-	public String getDescricao_bairro() {
-		return descricao_bairro;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDescricao_bairro(String descricao_bairro) {
-		this.descricao_bairro = descricao_bairro;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 }

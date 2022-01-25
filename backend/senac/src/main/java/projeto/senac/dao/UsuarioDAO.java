@@ -1,13 +1,16 @@
 package projeto.senac.dao;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
+import projeto.senac.modelo.Endereco;
+import projeto.senac.modelo.Estado;
+import projeto.senac.modelo.Logradouro;
+import projeto.senac.modelo.Municipio;
+import projeto.senac.modelo.TipoDocumento;
 import projeto.senac.modelo.TipoUsuario;
 import projeto.senac.modelo.Usuario;
 public class UsuarioDAO {
@@ -24,7 +27,7 @@ public class UsuarioDAO {
 		
 		List<Usuario> lista = new ArrayList<Usuario>();
 		Usuario u;
-		TipoUsuario t;
+		
 		
 		
 		try {
@@ -35,7 +38,7 @@ public class UsuarioDAO {
 			while(rs.next()) {
 				u = new Usuario();
 				
-				t = new TipoUsuario();
+				
 				
 		
 				//Usuario
@@ -47,39 +50,41 @@ public class UsuarioDAO {
 				u.setEmail(rs.getString("email"));
 				u.setSenha(rs.getString("senha"));
 				
+				//Tipo Documento
+				TipoDocumento tipoDocumento = new TipoDocumento();
+				tipoDocumento.setId_documento(rs.getInt("id_documento"));
+				tipoDocumento.setDescricao(rs.getString("td.descricao"));
+				u.setTipoDocumento(tipoDocumento);;
+				
 				//Tipo Usuário
-				u.setId_tipo(rs.getInt("id_tipo"));
-				u.setDescricao_tipo(rs.getString("descricao"));
+				TipoUsuario tipoUsuario = new TipoUsuario();
+				tipoUsuario.setId_tipo(rs.getInt("id_tipo"));
+				tipoUsuario.setDescricao(rs.getString("tu.descricao"));
+				u.setTipoUsuario(tipoUsuario);
 				
-
-				//Documento
-				u.setId_documento(rs.getInt("td.id_documento"));
-				u.setDescricao_documento(rs.getString("td.descricao"));
+				//Endereco
+				Endereco endereco = new Endereco();
+				endereco.setId_endereco(rs.getInt("id_endereco"));
+				endereco.setCep(rs.getString("CEP"));
+				endereco.setComplemento(rs.getString("complemento"));
+				endereco.setNome_rua(rs.getString("nome_rua"));
+				endereco.setNumero(rs.getInt("numero"));
+				Logradouro logradouro = new Logradouro();
+				logradouro.setId_logradouro(rs.getInt("id_logradouro"));
+				logradouro.setDescricao(rs.getString("l.descricao"));
+				Municipio municipio = new Municipio();
+				municipio.setId_municipio(rs.getInt("id_municipio"));
+				municipio.setDescricao(rs.getString("m.descricao"));
+				Estado estado = new Estado();
+				estado.setId_estado(rs.getInt("id_estado"));
+				estado.setDescricao(rs.getString("es.descricao"));
+				estado.setUf(rs.getString("UF"));
 				
-				//Endereço
-				u.setId_endereco(rs.getInt("e.id_endereco"));
-				u.setId_logradouro(rs.getInt("e.id_logradouro"));
-				u.setNome_rua(rs.getString("e.nome_rua"));
-				u.setId_bairro(rs.getInt("e.id_bairro"));
-				u.setId_municipio(rs.getInt("e.id_municipio"));
-				u.setCep(rs.getString("CEP"));
-				u.setNumero(rs.getInt("numero"));
-				u.setComplemento(rs.getString("complemento"));
+				municipio.setEstado(estado);
+				endereco.setMunicipio(municipio);
+				endereco.setLogradouro(logradouro);
+				u.setEndereco(endereco);
 				
-				//Logradouro
-				u.setDescricaoLog(rs.getString("l.descricao"));
-				
-				//Bairro
-				u.setDescricao_bairro(rs.getString("b.descricao"));
-				
-				//Municipio
-				u.setDescricao_municipio(rs.getString("m.descricao"));
-				
-				//Estado
-				u.setId_estado(rs.getInt("es.id_estado"));
-				u.setDescricao_estado(rs.getString("es.descricao"));
-				u.setUf(rs.getString("es.UF"));
-				;
 				
 				
 				
@@ -241,6 +246,11 @@ public class UsuarioDAO {
 			
 			while(rs.next()) {
 				
+				u = new Usuario();
+				
+				
+				
+				
 				//Usuario
 				u.setId_usuario(rs.getInt("id_usuario"));
 				u.setNome_completo(rs.getString("nome_completo"));
@@ -250,38 +260,48 @@ public class UsuarioDAO {
 				u.setEmail(rs.getString("email"));
 				u.setSenha(rs.getString("senha"));
 				
+				//Tipo Documento
+				TipoDocumento tipoDocumento = new TipoDocumento();
+				tipoDocumento.setId_documento(rs.getInt("id_documento"));
+				tipoDocumento.setDescricao(rs.getString("td.descricao"));
+				u.setTipoDocumento(tipoDocumento);
+				
 				//Tipo Usuário
-				u.setId_tipo(rs.getInt("id_tipo"));
-				u.setDescricao_tipo(rs.getString("descricao"));
+				TipoUsuario tipoUsuario = new TipoUsuario();
+				tipoUsuario.setId_tipo(rs.getInt("id_tipo"));
+				tipoUsuario.setDescricao(rs.getString("tu.descricao"));
+				u.setTipoUsuario(tipoUsuario);
 				
-
-				//Documento
-				u.setId_documento(rs.getInt("td.id_documento"));
-				u.setDescricao_documento(rs.getString("td.descricao"));
+				//Endereco
+				Endereco endereco = new Endereco();
+				endereco.setId_endereco(rs.getInt("id_endereco"));
+				endereco.setCep(rs.getString("CEP"));
+				endereco.setComplemento(rs.getString("complemento"));
+				endereco.setNome_rua(rs.getString("nome_rua"));
+				endereco.setNumero(rs.getInt("numero"));
+				Logradouro logradouro = new Logradouro();
+				logradouro.setId_logradouro(rs.getInt("id_logradouro"));
+				logradouro.setDescricao(rs.getString("l.descricao"));
+				Municipio municipio = new Municipio();
+				municipio.setId_municipio(rs.getInt("id_municipio"));
+				municipio.setDescricao(rs.getString("m.descricao"));
+				Estado estado = new Estado();
+				estado.setId_estado(rs.getInt("id_estado"));
+				estado.setDescricao(rs.getString("es.descricao"));
+				estado.setUf(rs.getString("UF"));
 				
-				//Endereço
-				u.setId_endereco(rs.getInt("e.id_endereco"));
-				u.setId_logradouro(rs.getInt("e.id_logradouro"));
-				u.setNome_rua(rs.getString("e.nome_rua"));
-				u.setId_bairro(rs.getInt("e.id_bairro"));
-				u.setId_municipio(rs.getInt("e.id_municipio"));
-				u.setCep(rs.getString("CEP"));
-				u.setNumero(rs.getInt("numero"));
-				u.setComplemento(rs.getString("complemento"));
+				municipio.setEstado(estado);
+				endereco.setMunicipio(municipio);
+				endereco.setLogradouro(logradouro);
+				u.setEndereco(endereco);
 				
-				//Logradouro
-				u.setDescricaoLog(rs.getString("l.descricao"));
 				
-				//Bairro
-				u.setDescricao_bairro(rs.getString("b.descricao"));
 				
-				//Municipio
-				u.setDescricao_municipio(rs.getString("m.descricao"));
 				
-				//Estado
-				u.setId_estado(rs.getInt("es.id_estado"));
-				u.setDescricao_estado(rs.getString("es.descricao"));
-				u.setUf(rs.getString("es.UF"));
+				
+				
+				
+			
 				
 				
 			}
@@ -296,90 +316,94 @@ public class UsuarioDAO {
 		return u;
 	}
 //	
-//	public Usuario buscarId(int id) {
-//		Connection cnx = Dao.getConexao();
-//		
-//		StringBuilder sql = new StringBuilder();
-//		
-//		sql.append("SELECT * FROM usuario WHERE id = ?");
-//		
-//		PreparedStatement ps; // 
-//		
-//		//boolean retorno = true;
-//		Usuario u = new Usuario();
-//		
-//		try {
-//			ps = cnx.prepareStatement(sql.toString());
-//			
-//			
-//			
-//			
-//			ps.setInt(1, id);
-//			
-//				
-//			
-//			
-//				
-//			ResultSet rs = ps.executeQuery();
-//			
-//			while(rs.next()) {
-//				
-//				u.setId(rs.getInt("id"));
-//				u.setEmail(rs.getString("email"));
-//				u.setNome(rs.getString("nome"));
-//				u.setNascimento(rs.getDate("nascimento"));
-//				u.setSenha(rs.getString("senha"));
-//			}
-//			ps.execute();
-//			ps.close();
-//			cnx.close();
-//			}
-//		 catch (SQLException e) {
-//			e.printStackTrace();
-//			//retorno = false;
-//		} 
-//		return u;
-//	}
-//
-//	public List<Usuario> buscarNome(String nome){
-//		Connection cnx = Dao.getConexao();
-//
-//		StringBuilder sql = new StringBuilder();
-//		sql.append("SELECT * FROM usuario WHERE nome = ?");
-//
-//		PreparedStatement ps; // Statement recebe os comandos do sql e recebe informações 
-//
-//		List<Usuario> lista = new ArrayList<Usuario>();
-//		Usuario u;
-//
-//		try {
-//			ps = cnx.prepareStatement(sql.toString());
-//
-//			ps.setString(1, nome);
-//
-//			ResultSet rs = ps.executeQuery();
-//
-//			while(rs.next()) {
-//				u = new Usuario();
-//
-//				u.setId(rs.getInt("id"));
-//				u.setEmail(rs.getString("email"));
-//				u.setNome(rs.getString("nome"));
-//				u.setNascimento(rs.getDate("nascimento"));
-//				u.setSenha(rs.getString("senha"));
-//
-//				lista.add(u);
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			Dao.fecharConexao();
-//			return lista;
-//		}
-//
-//	}
-//
-//
+	public Usuario buscarId(int id) {
+		Connection cnx = Dao.getConexao();
+		
+		StringBuilder sql = new StringBuilder();
+		
+		sql.append("select * from usuario u inner join tipo_usuario tu on tu.id_tipo = u.id_tipo inner join tipo_documento td on td.id_documento = u.id_documento inner join endereco e on e.id_endereco = u.id_endereco inner join logradouro l on l.id_logradouro = e.id_logradouro inner join bairro b on e.id_bairro = b.id_bairro inner join municipio m on e.id_municipio = m.id_municipio inner join estado es on m.id_estado = es.id_estado WHERE id_usuario = ?");
+		
+		PreparedStatement ps; // 
+		
+		//boolean retorno = true;
+		Usuario u = new Usuario();
+		
+		try {
+			ps = cnx.prepareStatement(sql.toString());
+			
+			
+			
+			
+			ps.setInt(1, id);
+			
+				
+			
+			
+				
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				u = new Usuario();
+				
+				
+				
+				
+				//Usuario
+				u.setId_usuario(rs.getInt("id_usuario"));
+				u.setNome_completo(rs.getString("nome_completo"));
+				u.setApelido(rs.getString("apelido"));
+				u.setNascimento(rs.getDate("nascimento"));
+				u.setDocumento(rs.getString("documento"));
+				u.setEmail(rs.getString("email"));
+				u.setSenha(rs.getString("senha"));
+				
+				//Tipo Documento
+				TipoDocumento tipoDocumento = new TipoDocumento();
+				tipoDocumento.setId_documento(rs.getInt("id_documento"));
+				tipoDocumento.setDescricao(rs.getString("td.descricao"));
+				u.setTipoDocumento(tipoDocumento);
+				
+				//Tipo Usuário
+				TipoUsuario tipoUsuario = new TipoUsuario();
+				tipoUsuario.setId_tipo(rs.getInt("id_tipo"));
+				tipoUsuario.setDescricao(rs.getString("tu.descricao"));
+				u.setTipoUsuario(tipoUsuario);
+				
+				//Endereco
+				Endereco endereco = new Endereco();
+				endereco.setId_endereco(rs.getInt("id_endereco"));
+				endereco.setCep(rs.getString("CEP"));
+				endereco.setComplemento(rs.getString("complemento"));
+				endereco.setNome_rua(rs.getString("nome_rua"));
+				endereco.setNumero(rs.getInt("numero"));
+				Logradouro logradouro = new Logradouro();
+				logradouro.setId_logradouro(rs.getInt("id_logradouro"));
+				logradouro.setDescricao(rs.getString("l.descricao"));
+				Municipio municipio = new Municipio();
+				municipio.setId_municipio(rs.getInt("id_municipio"));
+				municipio.setDescricao(rs.getString("m.descricao"));
+				Estado estado = new Estado();
+				estado.setId_estado(rs.getInt("id_estado"));
+				estado.setDescricao(rs.getString("es.descricao"));
+				estado.setUf(rs.getString("UF"));
+				
+				municipio.setEstado(estado);
+				endereco.setMunicipio(municipio);
+				endereco.setLogradouro(logradouro);
+				u.setEndereco(endereco);
+				
+			}
+			ps.execute();
+			ps.close();
+			cnx.close();
+			}
+		 catch (SQLException e) {
+			e.printStackTrace();
+			//retorno = false;
+		} 
+		return u;
+	}
+
 
 
 	}

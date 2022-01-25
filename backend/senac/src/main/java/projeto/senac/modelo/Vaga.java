@@ -1,6 +1,6 @@
 package projeto.senac.modelo;
 
-public class Vaga extends Usuario{
+public class Vaga {
 
 	private int id_vagas;
 	private Usuario usuario;

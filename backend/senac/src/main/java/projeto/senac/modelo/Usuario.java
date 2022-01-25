@@ -2,7 +2,7 @@ package projeto.senac.modelo;
 
 import java.util.Date;
 
-public class Usuario extends TipoDocumento{
+public class Usuario {
 	private int id_usuario;
 	private String nome_completo;
 	private String apelido;
@@ -13,6 +13,7 @@ public class Usuario extends TipoDocumento{
 	private String email;
 	private String senha;
 	private TipoUsuario tipoUsuario;
+	
 	
 	public Usuario(int id_usuario, String nome_completo, String apelido, Date nascimento, String documento,
 			String email, String senha) {

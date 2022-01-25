@@ -2,19 +2,20 @@ package projeto.senac.servico;
 import java.util.List;
 
 import projeto.senac.dao.EnderecoDAO;
-import projeto.senac.dao.TipoUsuarioDAO;
+
 import projeto.senac.dao.UsuarioDAO;
 import projeto.senac.modelo.Endereco;
-import projeto.senac.modelo.TipoUsuario;
+
 import projeto.senac.modelo.Usuario;
 
 public class UsuarioServico {
+	
 	public List<Usuario> listarUsuarios(){
     	UsuarioDAO dao = new UsuarioDAO();
     	//TipoUsuarioDAO dao2 = new TipoUsuarioDAO();
     	
     	List<Usuario> lista = dao.listar();
-    	//dao2.listar();
+  
     	
     	return lista;
 	}
@@ -39,30 +40,19 @@ public class UsuarioServico {
 //		return dao.alterar(usuario);
 //	}
 //	
-////	public Usuario buscarUsuario(int id) {
-////		UsuarioDAO dao = new UsuarioDAO();
-////		
-////		return dao.procurarId(id);
-////	}
+	public Usuario buscarUsuarioId(int id) {
+		UsuarioDAO dao = new UsuarioDAO();
+		
+		return dao.buscarId(id);
+	}
+	
 	public Usuario logarUsuario(String email,String senha) {
 		UsuarioDAO dao = new UsuarioDAO();
 		
 		return dao.executarLogin(email, senha);
 	}
-//	
-//	public Usuario buscarUsuarioId(int id) {
-//		UsuarioDAO dao = new UsuarioDAO();
-//		
-//		return dao.buscarId(id);
-//	}
-//
-//
-//		public List<Usuario> buscarUsuarioNome(String nome){
-//	    	UsuarioDAO dao = new UsuarioDAO();
-//	    	List<Usuario> lista = dao.buscarNome(nome);
-//
-//	    	return lista;
-//		}
+
+
 
 
 } 

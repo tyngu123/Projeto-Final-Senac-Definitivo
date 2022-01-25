@@ -1,14 +1,14 @@
 package projeto.senac.modelo;
 
-public class TipoUsuario extends Endereco{
+public class TipoUsuario {
 
 	private int id_tipo;
-	private String descricao_tipo;
+	private String descricao;
 	
-	public TipoUsuario(int id_tipo, String descricao_tipo) {
+	public TipoUsuario(int id_tipo, String descricao) {
 		super();
 		this.id_tipo = id_tipo;
-		this.descricao_tipo = descricao_tipo;
+		this.descricao = descricao;
 	}
 
 
@@ -26,12 +26,12 @@ public class TipoUsuario extends Endereco{
 		return null;
 	}
 
-	public String getDescricao_tipo() {
-		return descricao_tipo;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDescricao_tipo(String descricao_tipo) {
-		this.descricao_tipo = descricao_tipo;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 

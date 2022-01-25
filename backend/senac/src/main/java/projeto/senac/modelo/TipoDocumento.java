@@ -1,14 +1,14 @@
 package projeto.senac.modelo;
 
-public class TipoDocumento extends TipoUsuario{
+public class TipoDocumento {
 
 	private int id_documento;
-	private String descricao_documento;
+	private String descricao;
 	
-	public TipoDocumento(int id_documento, String descricao_documento) {
+	public TipoDocumento(int id_documento, String descricao) {
 		super();
 		this.id_documento = id_documento;
-		this.descricao_documento = descricao_documento;
+		this.descricao = descricao;
 	}
 
 	public TipoDocumento() {
@@ -25,11 +25,11 @@ public class TipoDocumento extends TipoUsuario{
 		this.id_documento = id_documento;
 	}
 
-	public String getDescricao_documento() {
-		return descricao_documento;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDescricao_documento(String descricao_documento) {
-		this.descricao_documento = descricao_documento;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 }
