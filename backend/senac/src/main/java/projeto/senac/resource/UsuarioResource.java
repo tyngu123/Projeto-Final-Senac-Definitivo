@@ -26,7 +26,12 @@ public class UsuarioResource {
     	UsuarioDAO dao = new UsuarioDAO();
     	List<Usuario> lista = dao.listar();
     	
-    	Response response = Response.ok().entity(lista).build();
+    	Response response = Response.status(200)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.entity(lista).build();
     	
     	return response;
     }
@@ -42,7 +47,12 @@ public class UsuarioResource {
     	dao.cadastrar(usuario);
     	
     	
-    	Response response = Response.ok().entity(true).build();
+    	Response response = Response.status(200)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.entity(true).build();
     	return response;  
     	
     }
@@ -54,7 +64,12 @@ public class UsuarioResource {
     	UsuarioDAO dao = new UsuarioDAO();
     	dao.excluir(usuario);
     	
-    	Response response = Response.ok().entity(true).build();
+    	Response response = Response.status(200)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.entity(true).build();
     	return response;  
     	
     }
@@ -77,7 +92,12 @@ public class UsuarioResource {
     	UsuarioDAO dao = new UsuarioDAO();
     	dao.executarLogin(email,senha);
     	
-    	Response response = Response.ok().entity(true).build();
+    	Response response = Response.status(200)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.entity(true).build();
     	return response;
     }
     

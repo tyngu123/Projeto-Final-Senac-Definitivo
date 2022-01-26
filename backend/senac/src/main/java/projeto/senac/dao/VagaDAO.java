@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import projeto.senac.modelo.Estado;
 import projeto.senac.modelo.TipoUsuario;
 import projeto.senac.modelo.Usuario;
 import projeto.senac.modelo.Vaga;
@@ -23,6 +24,8 @@ public class VagaDAO {
 				+ "on u.id_usuario = v.id_vagas\r\n"
 				+ "join tipo_usuario t\r\n"
 				+ "on u.id_tipo = t.id_tipo\r\n"
+				+ "inner join estado e\r\n"
+				+ "on v.id_estado = e.id_estado\r\n"
 				+ "ORDER BY id_vagas DESC;");
 		
 		PreparedStatement ps; // Statement recebe os comandos do sql e recebe informações 
@@ -45,7 +48,11 @@ public class VagaDAO {
 				v.setSalario(rs.getDouble("salario"));
 				v.setBeneficio(rs.getString("beneficio"));
 				v.setCarga_horaria(rs.getString("carga_horaria"));
-				v.setEstadoNome(rs.getString("estado"));
+				Estado estado = new Estado();
+				estado.setId_estado(rs.getInt("id_estado"));
+				estado.setDescricao(rs.getString("descricao"));
+				estado.setUf(rs.getString("UF"));
+				v.setEstado(estado);
 				v.setRequisitos(rs.getString("requisitos"));
 				
 				//Usuário
@@ -81,7 +88,7 @@ public class VagaDAO {
 		
 		StringBuilder sql = new StringBuilder();
 		
-		sql.append("INSERT INTO vagas(id_usuario, titulo, descricao, salario, beneficio, carga_horaria, estado, requisitos) VALUES( ? ,?, ?, ?, ?, ?, ?, ?);");
+		sql.append("INSERT INTO vagas(id_usuario, titulo, descricao, salario, beneficio, carga_horaria, id_estado, requisitos) VALUES( ? ,?, ?, ?, ?, ?, ?, ?);");
 		
 		PreparedStatement ps; // 
 		
@@ -99,7 +106,7 @@ public class VagaDAO {
 			ps.setDouble(4, vaga.getSalario());
 			ps.setString(5, vaga.getBeneficio());
 			ps.setString(6, vaga.getCarga_horaria());
-			ps.setString(7, vaga.getEstadoNome());
+			ps.setInt(7, vaga.getEstado().getId_estado());
 			ps.setString(8, vaga.getRequisitos());
 			
 			
@@ -161,6 +168,8 @@ public class VagaDAO {
 				+ "on u.id_usuario = v.id_vagas\r\n"
 				+ "join tipo_usuario t\r\n"
 				+ "on u.id_tipo = t.id_tipo\r\n"
+				+ "inner join estado e\r\n"
+				+ "on v.id_estado = e.id_estado\r\n"
 				+ "WHERE titulo = ?\r\n"
 				+ "ORDER BY id_vagas DESC;");
 
@@ -186,7 +195,12 @@ public class VagaDAO {
 				v.setSalario(rs.getDouble("salario"));
 				v.setBeneficio(rs.getString("beneficio"));
 				v.setCarga_horaria(rs.getString("carga_horaria"));
-				v.setEstadoNome(rs.getString("estado"));
+				Estado estado = new Estado();
+				estado.setId_estado(rs.getInt("id_estado"));
+				estado.setDescricao(rs.getString("descricao"));
+				estado.setUf(rs.getString("UF"));
+				v.setEstado(estado);
+				
 				v.setRequisitos(rs.getString("requisitos"));
 				
 				//Usuário
@@ -225,6 +239,8 @@ public class VagaDAO {
 				+ "on u.id_usuario = v.id_vagas\r\n"
 				+ "join tipo_usuario t\r\n"
 				+ "on u.id_tipo = t.id_tipo\r\n"
+				+ "inner join estado e\r\n"
+				+ "on v.id_estado = e.id_estado\r\n"
 				+ "WHERE id_vagas = ?;");
 				
 
@@ -250,7 +266,11 @@ public class VagaDAO {
 				v.setSalario(rs.getDouble("salario"));
 				v.setBeneficio(rs.getString("beneficio"));
 				v.setCarga_horaria(rs.getString("carga_horaria"));
-				v.setEstadoNome(rs.getString("estado"));
+				Estado estado = new Estado();
+				estado.setId_estado(rs.getInt("id_estado"));
+				estado.setDescricao(rs.getString("descricao"));
+				estado.setUf(rs.getString("UF"));
+				v.setEstado(estado);
 				v.setRequisitos(rs.getString("requisitos"));
 				
 				//Usuário
@@ -290,7 +310,9 @@ public class VagaDAO {
 				+ "on u.id_usuario = v.id_vagas\r\n"
 				+ "join tipo_usuario t\r\n"
 				+ "on u.id_tipo = t.id_tipo\r\n"
-				+ "WHERE estado = ?\r\n"
+				+ "inner join estado e\r\n"
+				+ "on v.id_estado = e.id_estado\r\n"
+				+ "WHERE e.UF = ?\r\n"
 				+ "ORDER BY id_vagas DESC;");
 
 		PreparedStatement ps; // Statement recebe os comandos do sql e recebe informações 
@@ -315,7 +337,11 @@ public class VagaDAO {
 				v.setSalario(rs.getDouble("salario"));
 				v.setBeneficio(rs.getString("beneficio"));
 				v.setCarga_horaria(rs.getString("carga_horaria"));
-				v.setEstadoNome(rs.getString("estado"));
+				Estado es = new Estado();
+				es.setId_estado(rs.getInt("id_estado"));
+				es.setDescricao(rs.getString("descricao"));
+				es.setUf(rs.getString("UF"));
+				v.setEstado(es);
 				v.setRequisitos(rs.getString("requisitos"));
 				
 				//Usuário

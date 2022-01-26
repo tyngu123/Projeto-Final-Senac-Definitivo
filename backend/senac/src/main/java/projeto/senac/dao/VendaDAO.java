@@ -1,6 +1,7 @@
 package projeto.senac.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -92,7 +93,7 @@ public class VendaDAO {
 		
 		StringBuilder sql = new StringBuilder();
 		
-		sql.append("INSERT INTO Cartao(numero, data_validade, nome_pessoa, cvv, banco) VALUES( ?, ?, ?, ?, ?);");
+		sql.append("INSERT INTO venda(data_venda, id_plano, valor, id_usuario, id_forma_pagamento) VALUES(?, ?, ?, ?, ?);");
 		
 		PreparedStatement ps; // 
 		
@@ -105,11 +106,8 @@ public class VendaDAO {
 			
 			
 			
-//			ps.setString(1, cartao.getNumero());
-//			ps.setString(2, cartao.getData_validade());
-//			ps.setString(3, cartao.getNome_pessoa());
-//			ps.setInt(4, cartao.getCvv());
-//			ps.setString(5, cartao.getBanco());
+			ps.setDate(1, new java.sql.Date(venda.getData_venda().getTime()));	
+			
 //		
 			
 			

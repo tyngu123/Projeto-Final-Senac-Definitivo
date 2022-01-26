@@ -10,10 +10,16 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import projeto.senac.modelo.Cartao;
+import projeto.senac.modelo.Endereco;
+import projeto.senac.modelo.PlanoCliente;
 import projeto.senac.modelo.TipoUsuario;
 import projeto.senac.modelo.Usuario;
 import projeto.senac.modelo.Vaga;
 import projeto.senac.modelo.Venda;
+import projeto.senac.servico.CartaoServico;
+import projeto.senac.servico.EnderecoServico;
+import projeto.senac.servico.PlanoClienteServico;
 import projeto.senac.servico.TipoUsuarioServico;
 import projeto.senac.servico.UsuarioServico;
 import projeto.senac.servico.VagaServico;
@@ -105,6 +111,23 @@ public class MyResource {
     	return response;
     }
     
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("listarPlanos")
+    public Response getPlanos() {
+    	PlanoClienteServico servico = new PlanoClienteServico();
+    	List<PlanoCliente> lista = servico.listarPlanoCliente();
+    	
+    	Response response = Response.status(200)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.entity(lista).build();
+    	
+    	return response;
+    }
+    
     //Serviços de inclusão  // Não funcionando
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -112,6 +135,74 @@ public class MyResource {
     public Response postUsuario(Usuario usuario) {
     	UsuarioServico servico = new UsuarioServico();
     	servico.cadastrarUsuarios(usuario);
+    	
+    	Response response = Response.status(200)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.entity(true).build();
+    	return response;
+    	
+    }
+    
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("cadastrarEndereco")
+    public Response postEndereco(Endereco endereco) {
+    	EnderecoServico servico = new EnderecoServico();
+    	servico.cadastrarEndereco(endereco);
+    	
+    	Response response = Response.status(200)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.entity(true).build();
+    	return response;
+    	
+    }
+    
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("cadastrarCartao")
+    public Response postCartao(Cartao cartao) {
+    	CartaoServico servico = new CartaoServico();
+    	servico.cadastrarCartao(cartao);
+    	
+    	Response response = Response.status(200)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.entity(true).build();
+    	return response;
+    	
+    }
+    
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("cadastrarVenda")
+    public Response postVenda(Venda venda) {
+    	VendaServico servico = new VendaServico();
+    	servico.cadastrarVenda(venda);
+    	
+    	Response response = Response.status(200)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.entity(true).build();
+    	return response;
+    	
+    }
+    
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("cadastrarVaga")
+    public Response postVaga(Vaga vaga) {
+    	VagaServico servico = new VagaServico();
+    	servico.cadastrarVagas(vaga);
     	
     	Response response = Response.status(200)
 				.header("Access-Control-Allow-Origin", "*")

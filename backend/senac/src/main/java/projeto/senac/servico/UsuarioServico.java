@@ -25,6 +25,7 @@ public class UsuarioServico {
 		EnderecoDAO dao2 = new EnderecoDAO();
 		Endereco endereco = new Endereco();
 		dao2.cadastrar(endereco);
+		
 		return dao.cadastrar(usuario);
 	}
 //	

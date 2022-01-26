@@ -9,11 +9,11 @@ public class Vaga {
 	private double salario;
 	private String beneficio;
 	private String carga_horaria;
-	private String estado;
+	private Estado estado;
 	private String requisitos;
 	
 	public Vaga(int id_vagas, String titulo, String descricao, double salario, String beneficio, String carga_horaria,
-			String estado, String requisitos) {
+			 String requisitos) {
 		super();
 		this.id_vagas = id_vagas;
 		this.titulo = titulo;
@@ -21,7 +21,7 @@ public class Vaga {
 		this.salario = salario;
 		this.beneficio = beneficio;
 		this.carga_horaria = carga_horaria;
-		this.estado = estado;
+		
 		this.requisitos = requisitos;
 	}
 
@@ -85,11 +85,11 @@ public class Vaga {
 		this.carga_horaria = carga_horaria;
 	}
 
-	public String getEstadoNome() {
+	public Estado getEstado() {
 		return estado;
 	}
 
-	public void setEstadoNome(String estado) {
+	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
 
