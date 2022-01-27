@@ -13,7 +13,7 @@ public class EnderecoDAO {
 		
 		StringBuilder sql = new StringBuilder();
 		
-		sql.append("INSERT INTO endereco( nome_rua, id_bairro, id_municipio, CEP, numero, complemento)VALUES( ?, ?, ?, ?, ?, ?);");
+		sql.append("INSERT INTO endereco( id_logradouro,nome_rua, id_bairro, id_municipio, CEP, numero, complemento)VALUES( ?, ?, ?, ?, ?, ?, ?);");
 		
 		PreparedStatement ps; // 
 		
@@ -25,7 +25,7 @@ public class EnderecoDAO {
 			
 			
 			
-			//ps.setInt(1, endereco.getLogradouro().getId_logradouro());
+			ps.setInt(1, endereco.getLogradouro().getId_logradouro());
 			ps.setString(2, endereco.getNome_rua());
 			ps.setInt(3, endereco.getBairro().getId_bairro());
 			ps.setInt(4, endereco.getMunicipio().getId_municipio());

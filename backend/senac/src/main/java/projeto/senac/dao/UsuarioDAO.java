@@ -112,9 +112,9 @@ public class UsuarioDAO {
 		
 		sql.append("INSERT INTO usuario(nome_completo, apelido, nascimento, documento, id_documento,id_endereco, email, senha, id_tipo) VALUES( ?, ? ,?, ?, ?, ?, ?, ?, ?);");
 		
-		PreparedStatement ps; // 
+		PreparedStatement ps; 
 		
-		boolean retorno = true;
+		boolean retorno = true; 
 		
 		
 		try {

@@ -50,7 +50,7 @@ public class VagaDAO {
 				v.setCarga_horaria(rs.getString("carga_horaria"));
 				Estado estado = new Estado();
 				estado.setId_estado(rs.getInt("id_estado"));
-				estado.setDescricao(rs.getString("descricao"));
+				estado.setDescricao(rs.getString("e.descricao"));
 				estado.setUf(rs.getString("UF"));
 				v.setEstado(estado);
 				v.setRequisitos(rs.getString("requisitos"));
