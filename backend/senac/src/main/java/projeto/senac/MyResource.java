@@ -1,9 +1,11 @@
 package projeto.senac;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -132,7 +134,7 @@ public class MyResource {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Path("cadastrar")
-    public Response postUsuario(Usuario usuario) {
+    public Response postUsuario(Usuario usuario) throws SQLException {
     	UsuarioServico servico = new UsuarioServico();
     	servico.cadastrarUsuarios(usuario);
     	
@@ -249,18 +251,56 @@ public class MyResource {
     	return response;  
     	
     }
-//    
-//    @PUT
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("alterar")
-//    public Response putUsuario(Usuario usuario) {
-//    	UsuarioServico servico = new UsuarioServico();
-//    	servico.alterarUsuarios(usuario);
-//    	
-//    	Response response = Response.ok().entity(true).build();
-//    	return response;
-//    }
-//    
+//    Serviços de alteração
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("alterarVaga")
+    public Response putVaga(Vaga vaga) {
+    	VagaServico servico = new VagaServico();
+    	servico.alterarVaga(vaga);
+    	
+    	Response response = Response.status(200)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.entity(true).build();
+    	return response; 
+    }
+    
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("alterar")
+    public Response putUsuario(Usuario usuario) {
+    	UsuarioServico servico = new UsuarioServico();
+    	servico.alterarUsuario(usuario);
+    	
+    	Response response = Response.status(200)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.entity(true).build();
+    	return response; 
+    }
+    
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("alterarEndereco")
+    public Response putEndereco(Endereco endereco) {
+    	EnderecoServico servico = new EnderecoServico();
+    	servico.alterarEndereco(endereco);
+    	
+    	Response response = Response.status(200)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.entity(true).build();
+    	return response; 
+    }
+    
+    //Serviço de autentificação
     @GET
     @Produces(MediaType.APPLICATION_JSON)
    // @Consumes(MediaType.APPLICATION_JSON)

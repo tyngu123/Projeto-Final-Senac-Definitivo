@@ -1,4 +1,5 @@
 package projeto.senac.servico;
+import java.sql.SQLException;
 import java.util.List;
 
 import projeto.senac.dao.EnderecoDAO;
@@ -20,7 +21,7 @@ public class UsuarioServico {
     	return lista;
 	}
 	
-	public boolean cadastrarUsuarios(Usuario usuario) {
+	public boolean cadastrarUsuarios(Usuario usuario) throws SQLException {
 		UsuarioDAO dao = new UsuarioDAO();
 		EnderecoDAO dao2 = new EnderecoDAO();
 		Endereco endereco = new Endereco();
@@ -35,11 +36,11 @@ public class UsuarioServico {
 		return dao.excluir(usuario);
 	}
 //	
-//	public boolean alterarUsuarios(Usuario usuario) {
-//		UsuarioDAO dao = new UsuarioDAO();
-//		
-//		return dao.alterar(usuario);
-//	}
+	public boolean alterarUsuario(Usuario usuario) {
+		UsuarioDAO dao = new UsuarioDAO();
+		
+		return dao.alterar(usuario);
+	}
 //	
 	public Usuario buscarUsuarioId(int id) {
 		UsuarioDAO dao = new UsuarioDAO();

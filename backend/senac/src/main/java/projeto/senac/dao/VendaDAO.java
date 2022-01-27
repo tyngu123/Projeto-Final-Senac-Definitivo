@@ -105,8 +105,12 @@ public class VendaDAO {
 			
 			
 			
-			
+			// Adicionar vendas
 			ps.setDate(1, new java.sql.Date(venda.getData_venda().getTime()));	
+			ps.setInt(2, venda.getPlanoCliente().getId_plano());
+			ps.setDouble(3, venda.getValor());
+			ps.setInt(4, venda.getUsuario().getId_usuario());
+			ps.setInt(5, venda.getFormaPagamento().getId_forma_pagamento());
 			
 //		
 			

@@ -371,5 +371,45 @@ public class VagaDAO {
 
 	}
 	
+	public boolean alterar(Vaga vaga) {
+		Connection cnx = Dao.getConexao();
+
+		StringBuilder sql = new StringBuilder();
+
+		sql.append("UPDATE vagas SET id_usuario = ?, titulo = ?, descricao = ?, salario = ? , beneficio = ?, carga_horaria = ?, id_estado = ?, requisitos = ? WHERE id_vagas = ?");
+
+		PreparedStatement ps; // 
+
+		boolean retorno = true;
+
+
+		try {
+			ps = cnx.prepareStatement(sql.toString());
+
+
+			ps.setInt(1, vaga.getUsuario().getId_usuario());
+			ps.setString(2, vaga.getTitulo());	
+			ps.setString(3, vaga.getDescricao());
+			ps.setDouble(4, vaga.getSalario());
+			ps.setString(5, vaga.getBeneficio());
+			ps.setString(6, vaga.getCarga_horaria());
+			ps.setInt(7, vaga.getEstado().getId_estado());
+			ps.setString(8, vaga.getRequisitos());
+			ps.setInt(9, vaga.getId_vagas());
+
+
+			ps.execute();
+			ps.close();
+			cnx.close();
+
+
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			retorno = false;
+		} 
+		return retorno;
+	}
+	
 	
 }

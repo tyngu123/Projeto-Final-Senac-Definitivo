@@ -48,4 +48,10 @@ public class VagaServico {
 			
 			return dao.excluir(vaga);
 		}
+		
+		public boolean alterarVaga(Vaga vaga) {
+		VagaDAO dao = new VagaDAO();
+		
+		return dao.alterar(vaga);
+		}
 }

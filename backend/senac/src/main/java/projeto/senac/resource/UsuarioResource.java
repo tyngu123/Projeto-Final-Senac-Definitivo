@@ -1,5 +1,6 @@
 package projeto.senac.resource;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.ws.rs.DELETE;
@@ -39,11 +40,9 @@ public class UsuarioResource {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Path("cadastrar")
-    public Response getUsuariosCadastro(Usuario usuario) {
+    public Response getUsuariosCadastro(Usuario usuario) throws SQLException {
     	UsuarioDAO dao = new UsuarioDAO();
-    	EnderecoDAO dao2 = new EnderecoDAO();
-    	Endereco endereco = new Endereco();
-    	dao2.cadastrar(endereco);
+
     	dao.cadastrar(usuario);
     	
     	

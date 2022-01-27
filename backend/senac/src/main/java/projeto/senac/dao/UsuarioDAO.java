@@ -105,21 +105,31 @@ public class UsuarioDAO {
 		
 	}
 	
-	public boolean cadastrar(Usuario usuario) {
+	public boolean cadastrar(Usuario usuario) throws SQLException {
 		Connection cnx = Dao.getConexao();
 		
 		StringBuilder sql = new StringBuilder();
 		
-		sql.append("INSERT INTO usuario(nome_completo, apelido, nascimento, documento, id_documento,id_endereco, email, senha, id_tipo) VALUES( ?, ? ,?, ?, ?, ?, ?, ?, ?);");
-		
+		sql.append("INSERT INTO usuario(nome_completo, apelido, nascimento, documento, id_documento,id_endereco,email, senha, id_tipo) VALUES(?, ? ,?, ?, ?, ?, ?, ?, ?);");
+		String getId = "SELECT MAX(id_endereco) AS id_endereco FROM endereco";
 		PreparedStatement ps; 
+		ResultSet rs;
+		
+		
 		
 		boolean retorno = true; 
 		
 		
 		try {
+			
 			ps = cnx.prepareStatement(sql.toString());
 			
+			rs = ps.executeQuery(getId);
+			
+			if(rs.next()) {
+				
+			int lastid = rs.getInt("id_endereco");
+			rs.close();
 			
 			
 			ps.setString(1, usuario.getNome_completo());
@@ -127,13 +137,14 @@ public class UsuarioDAO {
 			ps.setDate(3, new java.sql.Date(usuario.getNascimento().getTime()));	
 			ps.setString(4, usuario.getDocumento());
 			ps.setInt(5, usuario.getTipoDocumento().getId_documento());
-			ps.setInt(6, usuario.getEndereco().getId_endereco());
+			ps.setInt(6, lastid);
 			ps.setString(7, usuario.getEmail());
 			ps.setString(8, usuario.getSenha());
 			ps.setInt(9, usuario.getTipoUsuario().getId_tipo());
 			
+			ps.executeUpdate();
+			}
 			
-			ps.execute();
 			ps.close();
 			cnx.close();
 				
@@ -180,43 +191,47 @@ public class UsuarioDAO {
 		return retorno;
 	}
 //	
-//	public boolean alterar(Usuario usuario) {
-//		Connection cnx = Dao.getConexao();
-//		
-//		StringBuilder sql = new StringBuilder();
-//		
-//		sql.append("UPDATE usuario SET email = ?, nome = ?, nascimento = ?, senha = ? WHERE id = ?");
-//		
-//		PreparedStatement ps; // 
-//		
-//		boolean retorno = true;
-//		
-//		
-//		try {
-//			ps = cnx.prepareStatement(sql.toString());
-//			
-//			
-//			
-//			
-//			ps.setString(1, usuario.getEmail());
-//			ps.setString(2, usuario.getNome());
-//			ps.setDate(3, new java.sql.Date(usuario.getNascimento().getTime()));		
-//			ps.setString(4, usuario.getSenha());	
-//			ps.setInt(5, usuario.getId());
-//				
-//			
-//			ps.execute();
-//			ps.close();
-//			cnx.close();
-//				
-//				
-//			}
-//		 catch (SQLException e) {
-//			e.printStackTrace();
-//			retorno = false;
-//		} 
-//		return retorno;
-//	}
+	public boolean alterar(Usuario usuario) {
+		Connection cnx = Dao.getConexao();
+		
+		StringBuilder sql = new StringBuilder();
+		
+		sql.append("UPDATE usuario SET nome_completo = ?, apelido = ?, nascimento = ?, documento = ?, id_documento = ?, email = ?, senha = ?, id_tipo = ? WHERE id_usuario = ?");
+		
+		PreparedStatement ps; // 
+		
+		boolean retorno = true;
+		
+		
+		try {
+			ps = cnx.prepareStatement(sql.toString());
+			
+			
+			
+			
+			ps.setString(1, usuario.getNome_completo());
+			ps.setString(2, usuario.getApelido());
+			ps.setDate(3, new java.sql.Date(usuario.getNascimento().getTime()));		
+			ps.setString(4, usuario.getDocumento());	
+			ps.setInt(5, usuario.getTipoDocumento().getId_documento());
+			ps.setString(6, usuario.getEmail());
+			ps.setString(7, usuario.getSenha());
+			ps.setInt(8, usuario.getTipoUsuario().getId_tipo());
+			ps.setInt(9, usuario.getId_usuario());
+				
+			
+			ps.execute();
+			ps.close();
+			cnx.close();
+				
+				
+			}
+		 catch (SQLException e) {
+			e.printStackTrace();
+			retorno = false;
+		} 
+		return retorno;
+	}
 //	
 	public Usuario executarLogin(String email,String senha) {
 		Connection cnx = Dao.getConexao();

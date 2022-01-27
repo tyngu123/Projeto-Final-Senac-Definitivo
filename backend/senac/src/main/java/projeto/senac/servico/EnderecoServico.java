@@ -14,4 +14,12 @@ public class EnderecoServico {
 		
 		return dao.cadastrar(endereco);
 	}
+	
+	public boolean alterarEndereco(Endereco endereco) {
+		
+		EnderecoDAO dao = new EnderecoDAO();
+		dao.alterar(endereco);
+		
+		return dao.alterar(endereco);
+	}
 }

@@ -13,7 +13,7 @@ import projeto.senac.modelo.Usuario;
 
 public class TipoUsuarioDAO {
 
-public static List<TipoUsuario> listar(){
+public List<TipoUsuario> listar(){
 		
 		
 		
