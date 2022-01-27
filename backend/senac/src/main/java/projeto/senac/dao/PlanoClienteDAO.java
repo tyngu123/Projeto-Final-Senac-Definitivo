@@ -61,4 +61,52 @@ public class PlanoClienteDAO {
 		
 	}
 	
+	public PlanoCliente buscarId(int id) {
+		Connection cnx = Dao.getConexao();
+		
+		StringBuilder sql = new StringBuilder();
+		
+		sql.append("select * from plano_cliente WHERE id_plano = ?");
+		
+		PreparedStatement ps; // 
+		
+		//boolean retorno = true;
+		PlanoCliente p = new PlanoCliente();
+		
+		try {
+			ps = cnx.prepareStatement(sql.toString());
+			
+			
+			
+			
+			ps.setInt(1, id);
+			
+				
+			
+			
+				
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				p = new PlanoCliente();
+				
+
+				p.setId_plano(rs.getInt("id_plano"));
+				p.setPlanos(rs.getString("planos"));
+				p.setPlanos_descricao(rs.getString("planos_descricao"));
+				p.setPlanos_preco(rs.getDouble("planos_preco"));
+				
+				
+			}
+			ps.execute();
+			ps.close();
+			cnx.close();
+			}
+		 catch (SQLException e) {
+			e.printStackTrace();
+			//retorno = false;
+		} 
+		return p;
+	}
+	
 }

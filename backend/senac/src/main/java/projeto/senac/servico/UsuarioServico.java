@@ -23,9 +23,7 @@ public class UsuarioServico {
 	
 	public boolean cadastrarUsuarios(Usuario usuario) throws SQLException {
 		UsuarioDAO dao = new UsuarioDAO();
-		EnderecoDAO dao2 = new EnderecoDAO();
-		Endereco endereco = new Endereco();
-		dao2.cadastrar(endereco);
+		
 		
 		return dao.cadastrar(usuario);
 	}

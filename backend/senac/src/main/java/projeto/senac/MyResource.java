@@ -414,6 +414,27 @@ public class MyResource {
 	  	}
   }
 	  
+	  @GET
+	    @Produces(MediaType.APPLICATION_JSON)
+	    @Path("buscarPlanoId")
+	    public Response getPlanoId(@QueryParam("id_plano")int id) {
+	    	PlanoClienteServico servico = new PlanoClienteServico();
+	    	PlanoCliente planoCliente = servico.buscarPlanoId(id);
+	    	if(planoCliente.getId_plano() != 0) {
+	    		Response response = Response.status(200)
+	    				.header("Access-Control-Allow-Origin", "*")
+	    				.header("Access-Control-Allow-Credentials", "true")
+	    				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+	    				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+	    				.entity(planoCliente).build();
+	        	return response;
+	        	} else {
+	        	Response response = Response.ok().entity("Não foi possível encontrar essa plano").build();
+	            return response;
+	        	}
+
+	        }
+	  
 	  
 
 

@@ -129,7 +129,7 @@ public class UsuarioDAO {
 			if(rs.next()) {
 				
 			int lastid = rs.getInt("id_endereco");
-			rs.close();
+			
 			
 			
 			ps.setString(1, usuario.getNome_completo());
@@ -144,7 +144,7 @@ public class UsuarioDAO {
 			
 			ps.executeUpdate();
 			}
-			
+			rs.close();
 			ps.close();
 			cnx.close();
 				
