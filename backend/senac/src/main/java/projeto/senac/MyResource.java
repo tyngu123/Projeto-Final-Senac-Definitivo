@@ -12,6 +12,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import projeto.senac.modelo.AssinaturaCliente;
 import projeto.senac.modelo.Cartao;
 import projeto.senac.modelo.Endereco;
 import projeto.senac.modelo.PlanoCliente;
@@ -19,6 +20,7 @@ import projeto.senac.modelo.TipoUsuario;
 import projeto.senac.modelo.Usuario;
 import projeto.senac.modelo.Vaga;
 import projeto.senac.modelo.Venda;
+import projeto.senac.servico.AssinaturaServico;
 import projeto.senac.servico.CartaoServico;
 import projeto.senac.servico.EnderecoServico;
 import projeto.senac.servico.PlanoClienteServico;
@@ -128,6 +130,24 @@ public class MyResource {
 				.entity(lista).build();
     	
     	return response;
+    }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("listarAssinaturas")
+    public Response getAssinaturas() {
+    	AssinaturaServico servico = new AssinaturaServico();
+    	List<AssinaturaCliente> lista = servico.listarAssinaturaCliente();
+    	
+    	Response response = Response.status(200)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.entity(lista).build();
+
+    	return response;
+    	
     }
     
     //Serviços de inclusão  // Não funcionando

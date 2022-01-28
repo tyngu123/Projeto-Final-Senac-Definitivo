@@ -11,6 +11,10 @@ public class AssinaturaCliente {
 		this.id_assinatura = id_assinatura;
 	}
 
+	public AssinaturaCliente() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId_assinatura() {
 		return id_assinatura;
 	}
