@@ -325,10 +325,10 @@ public class MyResource {
     @Produces(MediaType.APPLICATION_JSON)
    // @Consumes(MediaType.APPLICATION_JSON)
     @Path("logar")
-    public Response getLoginInfo(@QueryParam("email")String email,@QueryParam("senha")String senha) {
+    public Response getLoginInfo(Usuario usuario) {
     	UsuarioServico servico = new UsuarioServico();
-    	Usuario usuario = servico.logarUsuario(email,senha);
-    	if(usuario.getId_usuario() != 0) {
+    	Usuario u = servico.logarUsuario(usuario);
+    	if(u.getId_usuario() != 0) {
     		Response response = Response.status(200)
     				.header("Access-Control-Allow-Origin", "*")
     				.header("Access-Control-Allow-Credentials", "true")

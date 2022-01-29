@@ -87,9 +87,9 @@ public class UsuarioResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("logar")
-    public Response getUsuariosLogar(@QueryParam("email")String email,@QueryParam("senha")String senha) {
+    public Response getUsuariosLogar(Usuario usuario) {
     	UsuarioDAO dao = new UsuarioDAO();
-    	dao.executarLogin(email,senha);
+    	dao.executarLogin(usuario);
     	
     	Response response = Response.status(200)
 				.header("Access-Control-Allow-Origin", "*")

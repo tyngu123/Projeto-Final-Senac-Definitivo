@@ -46,10 +46,10 @@ public class UsuarioServico {
 		return dao.buscarId(id);
 	}
 	
-	public Usuario logarUsuario(String email,String senha) {
+	public Usuario logarUsuario(Usuario usuario) {
 		UsuarioDAO dao = new UsuarioDAO();
 		
-		return dao.executarLogin(email, senha);
+		return dao.executarLogin(usuario);
 	}
 
 

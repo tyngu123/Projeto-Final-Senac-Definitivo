@@ -233,7 +233,7 @@ public class UsuarioDAO {
 		return retorno;
 	}
 //	
-	public Usuario executarLogin(String email,String senha) {
+	public Usuario executarLogin(Usuario usuario) {
 		Connection cnx = Dao.getConexao();
 		
 		StringBuilder sql = new StringBuilder();
@@ -251,8 +251,9 @@ public class UsuarioDAO {
 			
 			
 			
-			ps.setString(1, email);
-			ps.setString(2, senha);
+			ps.setString(1, usuario.getEmail());
+			ps.setString(2, usuario.getSenha());
+			
 				
 			
 			
